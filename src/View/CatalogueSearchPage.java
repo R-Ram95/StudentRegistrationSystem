@@ -15,39 +15,34 @@ public class CatalogueSearchPage {
     private JButton searchButton = new JButton("Go");
     private JTextArea courseArea = new JTextArea(30, 30);
 
-    public CatalogueSearchPage(){
+
+    public void displayGUI(){
         JFrame frame = new JFrame("Catalogue Search");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
         frame.setSize(400, 400);
 
-        // panel for course name
-        JPanel namePanel = new JPanel();
-        namePanel.add(courseNameLabel);
-        namePanel.add(courseName);
+        // format fields
+        courseNameLabel.setBounds(10,20, 100, 25);
+        courseName.setBounds(150, 20, 165, 25);
 
-        // panel for course number
-        JPanel numberPanel = new JPanel();
-        numberPanel.add(courseNumberLabel);
-        numberPanel.add(courseNumber);
+        courseNumberLabel.setBounds(10, 50, 100, 25);
+        courseNumber.setBounds(150,50, 165, 25 );
 
-        // panel to contain input fields
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BorderLayout());
+        searchButton.setBounds(180, 85, 100, 25);
 
-        // add components to input panel
-        inputPanel.add(namePanel, BorderLayout.NORTH);
-        inputPanel.add(numberPanel, BorderLayout.CENTER);
+        courseArea.setBounds(10, 120, 365, 230);
+        courseArea.setEditable(false);
 
-        // add buttons to buttons panel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(searchButton);
+        // add components to frame
+        panel.add(courseNameLabel);
+        panel.add(courseName);
+        panel.add(courseNumberLabel);
+        panel.add(courseNumber);
+        panel.add(searchButton);
+        panel.add(courseArea);
 
-        // put all components into frame
-        frame.setLayout(new BorderLayout());
-        frame.add(inputPanel, BorderLayout.NORTH);
-        frame.add(buttonPanel, BorderLayout.CENTER);
-        frame.add(courseArea);
-
+        frame.add(panel);
         frame.setVisible(true);
     }
 
