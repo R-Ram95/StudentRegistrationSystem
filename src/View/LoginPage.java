@@ -1,5 +1,7 @@
 package View;
 
+import Controller.LoginController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * View for logging in
  */
-public class LoginPage implements ActionListener{
+public class LoginPage{
     JButton button = new JButton("Login");
     JTextField nameText = new JTextField();
     JTextField stuNumText = new JTextField();
@@ -48,22 +50,32 @@ public class LoginPage implements ActionListener{
         button.setBounds(100, 90, 100, 25);
         panel.add(button);
 
-        button.addActionListener(this);
+//        button.addActionListener(this);
 
         frame.setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == button){
-            RegistrationApp myApp = new RegistrationApp();
-            myApp.displayApp();
-        }
+//    public void actionPerformed(ActionEvent e){
+//        if(e.getSource() == button){
+//            RegistrationApp myApp = new RegistrationApp();
+//            myApp.displayApp();
+//        }
+//    }
+    public void addActionListener(ActionListener buttonClicked){
+        button.addActionListener(buttonClicked);
+    }
+
+    public void setButton(){
+        this.button = button;
+    }
+
+    public JButton getButton(){
+        return button;
     }
 
     public String getStudentName() {
         return nameText.getText();
     }
-
 
     public int getStudentNumber() {
         return Integer.parseInt(stuNumText.getText());

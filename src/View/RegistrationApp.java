@@ -1,5 +1,8 @@
 package View;
 
+import Controller.LoginController;
+import Model.StudentList;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,11 +57,15 @@ public class RegistrationApp implements ActionListener {
         frame.setVisible(true);
     }
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        RegistrationApp app = new RegistrationApp();
 //        app.displayApp();
-//
-//    }
+
+        LoginPage login = new LoginPage();
+        StudentList list = new StudentList();
+        LoginConstroller = new LoginController(login, list);
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
