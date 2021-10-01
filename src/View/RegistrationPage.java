@@ -9,54 +9,47 @@ import java.awt.*;
  */
 public class RegistrationPage extends JFrame {
 
-    private JLabel courseNameLabel = new JLabel("Course Name");
+    private JLabel courseNameLabel = new JLabel("Course Name: ");
     private JTextField courseName = new JTextField(10);
-    private JLabel courseNumberLabel = new JLabel("Course Number");
+    private JLabel courseNumberLabel = new JLabel("Course Number:");
     private JTextField courseNumber = new JTextField(10);
-    private JLabel sectionlabel = new JLabel("Course Section");
+    private JLabel sectionlabel = new JLabel("Course Section:");
     private JTextField courseSection = new JTextField(10);
     private JButton registrationButton = new JButton("Register");
     private JButton unregisterButton = new JButton("Unregister");
 
-    public RegistrationPage(){
+    public void displayGUI(){
         JFrame frame = new JFrame("Registration Page");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
 
-        // panel for course name
-        JPanel namePanel = new JPanel();
-        namePanel.add(courseNameLabel);
-        namePanel.add(courseName);
+        // formant components
+        courseNameLabel.setBounds(10,20, 100, 25);
+        courseName.setBounds(150, 20, 165, 25);
 
-        // panel for course number
-        JPanel numberPanel = new JPanel();
-        numberPanel.add(courseNumberLabel);
-        numberPanel.add(courseNumber);
+        courseNumberLabel.setBounds(10, 50, 100, 25);
+        courseNumber.setBounds(150,50, 165, 25 );
 
-        // panel for course section
-        JPanel sectionPanel = new JPanel();
-        sectionPanel.add(sectionlabel);
-        sectionPanel.add(courseSection);
+        sectionlabel.setBounds(10, 80, 100, 25);
+        courseSection.setBounds(150, 80, 165, 25);
 
-        // panel to contain input fields
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BorderLayout());
+        registrationButton.setBounds(10, 125, 165, 25);
+        unregisterButton.setBounds(180, 125, 165, 25);
 
-        // add components to input panel
-        inputPanel.add(namePanel, BorderLayout.NORTH);
-        inputPanel.add(numberPanel, BorderLayout.CENTER);
-        inputPanel.add(sectionPanel, BorderLayout.SOUTH);
+        // add components to panel
+        panel.add(courseNameLabel);
+        panel.add(courseName);
+        panel.add(courseNumberLabel);
+        panel.add(courseNumber);
+        panel.add(sectionlabel);
+        panel.add(courseSection);
+        panel.add(registrationButton);
+        panel.add(unregisterButton);
 
-        // add buttons to buttons panel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(registrationButton);
-        buttonPanel.add(unregisterButton);
-
-        // put all components into frame
-        frame.setLayout(new BorderLayout());
-        frame.add(inputPanel, BorderLayout.NORTH);
-        frame.add(buttonPanel, BorderLayout.CENTER);
-
+        frame.add(panel);
         frame.setVisible(true);
     }
 
