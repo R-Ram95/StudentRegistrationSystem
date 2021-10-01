@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * Shows students registered courses
  */
 public class StudentCoursesPage {
+
     public void displayGUI() {
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -21,7 +22,6 @@ public class StudentCoursesPage {
 
         //configure the frame
         frame.setSize(700, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
         //Set the layout

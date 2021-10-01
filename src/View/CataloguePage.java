@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * Shows full Catalogue
  */
 public class CataloguePage {
+
+
     public void displayGUI() {
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -21,7 +23,6 @@ public class CataloguePage {
 
         //configure the frame
         frame.setSize(700, 500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
         //Set the layout

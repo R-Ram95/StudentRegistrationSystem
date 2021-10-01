@@ -1,7 +1,6 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,7 +50,7 @@ public class LoginPage implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
-            App myApp = new App();
+            RegistrationApp myApp = new RegistrationApp();
         }
     }
 

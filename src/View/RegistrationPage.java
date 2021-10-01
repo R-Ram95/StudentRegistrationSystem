@@ -23,7 +23,6 @@ public class RegistrationPage extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
 
         // formant components
