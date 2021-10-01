@@ -1,7 +1,68 @@
 package View;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * View for logging in
  */
-public class LoginPage {
+public class LoginPage implements ActionListener{
+    JButton button = new JButton("Login");
+
+    public void displayGUI() {
+        JPanel panel = new JPanel();
+        JFrame frame = new JFrame();
+
+        //configure the frame
+        frame.setSize(350, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+
+        //Set the layout
+        panel.setLayout(null);
+
+        //name label and textbox
+        JLabel nameLabel = new JLabel("Name: ");
+        nameLabel.setBounds(10, 20, 80, 25);
+        panel.add(nameLabel);
+
+        JTextField nameText = new JTextField();
+        nameText.setBounds(150, 20, 165, 25);
+        panel.add(nameText);
+
+        //student number label and textbox
+        JLabel stuNumLabel = new JLabel("Student Number: ");
+        stuNumLabel.setBounds(10, 50, 120, 25);
+        panel.add(stuNumLabel);
+
+        JTextField stuNumText = new JTextField();
+        stuNumText.setBounds(150, 50, 165, 25);
+        panel.add(stuNumText);
+
+        button.setBounds(100, 90, 100, 25);
+        panel.add(button);
+
+        button.addActionListener(this);
+
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // write your code here
+        LoginPage login = new LoginPage();
+        login.displayGUI();
+
+        StudentCoursesPage student = new StudentCoursesPage();
+        student.displayGUI();
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == button){
+            App myApp = new App();
+        }
+    }
+
+
 }
