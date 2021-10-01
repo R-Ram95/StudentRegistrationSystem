@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
  */
 public class LoginPage implements ActionListener{
     JButton button = new JButton("Login");
+    JTextField nameText = new JTextField();
+    JTextField stuNumText = new JTextField();
 
     public void displayGUI() {
         JPanel panel = new JPanel();
@@ -17,7 +19,6 @@ public class LoginPage implements ActionListener{
 
         //configure the frame
         frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
         //Set the layout
@@ -28,7 +29,7 @@ public class LoginPage implements ActionListener{
         nameLabel.setBounds(10, 20, 80, 25);
         panel.add(nameLabel);
 
-        JTextField nameText = new JTextField();
+
         nameText.setBounds(150, 20, 165, 25);
         panel.add(nameText);
 
@@ -37,7 +38,6 @@ public class LoginPage implements ActionListener{
         stuNumLabel.setBounds(10, 50, 120, 25);
         panel.add(stuNumLabel);
 
-        JTextField stuNumText = new JTextField();
         stuNumText.setBounds(150, 50, 165, 25);
         panel.add(stuNumText);
 
@@ -49,20 +49,20 @@ public class LoginPage implements ActionListener{
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        // write your code here
-        LoginPage login = new LoginPage();
-        login.displayGUI();
-
-        StudentCoursesPage student = new StudentCoursesPage();
-        student.displayGUI();
-    }
-
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
             App myApp = new App();
         }
     }
 
+
+    public String getStudentName() {
+        return nameText.getText();
+    }
+
+
+    public int getStudentNumber() {
+        return Integer.parseInt(stuNumText.getText());
+    }
 
 }
