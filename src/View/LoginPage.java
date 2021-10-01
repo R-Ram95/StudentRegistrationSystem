@@ -12,6 +12,11 @@ public class LoginPage implements ActionListener{
     JTextField nameText = new JTextField();
     JTextField stuNumText = new JTextField();
 
+    public static void main(String args[]){
+        LoginPage login = new LoginPage();
+        login.displayGUI();
+    }
+
     public void displayGUI() {
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -51,9 +56,9 @@ public class LoginPage implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
             RegistrationApp myApp = new RegistrationApp();
+            myApp.displayApp();
         }
     }
-
 
     public String getStudentName() {
         return nameText.getText();

@@ -54,11 +54,11 @@ public class RegistrationApp implements ActionListener {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        RegistrationApp app = new RegistrationApp();
-        app.displayApp();
-
-    }
+//    public static void main(String[] args) {
+//        RegistrationApp app = new RegistrationApp();
+//        app.displayApp();
+//
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
