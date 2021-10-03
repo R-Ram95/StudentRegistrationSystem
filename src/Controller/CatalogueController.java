@@ -28,13 +28,9 @@ public class CatalogueController {
 //                RegistrationApp myApp = new RegistrationApp();
 //                myApp.displayApp();
                 view.displayGUI(view.getButton());
-
             }
-
         }
-
     }
-
     public String getTheList(){
         return model.toString();
     }

@@ -1,29 +1,39 @@
 package Controller;
 
-import Model.CourseModel;
+import Model.CatalogueModel;
 import View.RegistrationApp;
-import View.StudentCoursesPage;
+import View.CatalogueSearchPage;
+import Model.CourseModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CourseController {
-    CourseModel model;
-    StudentCoursesPage view;
+    CatalogueModel model;
+    CatalogueSearchPage view;
 
-    CourseController(CourseModel model, StudentCoursesPage view){
+    public CourseController(CatalogueModel model, CatalogueSearchPage view){
         this.model = model;
         this.view = view;
 
-        view.getButton().addActionListener(new CourseListener());
+        view.addActionListener(new CourseListener());
     }
     class CourseListener implements ActionListener {
+        String courseName;
+        String courseNum;
 
+        @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == view.getButton()) {
+//            if (e.getSource() == view.getButton()) {
 //                RegistrationApp myApp = new RegistrationApp();
 //                myApp.displayApp();
+            courseName = view.getCourseName();
+            courseNum = view.getCourseNumber();
+            CourseModel courseFound = model.searchCat(courseName, courseNum);
+            if(courseFound!=null){
+                view.setCourse(courseName, courseNum);
+            }
             }
         }
     }
-}
+

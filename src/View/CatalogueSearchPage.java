@@ -2,6 +2,8 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import Controller.CourseController;
 
 /**
  * Search catalogue for a course
@@ -14,6 +16,7 @@ public class CatalogueSearchPage {
     private JTextField courseNumber = new JTextField(10);
     private JButton searchButton = new JButton("Go");
     private JTextArea courseArea = new JTextArea(30, 30);
+
 
 
     public void displayGUI(){
@@ -58,8 +61,17 @@ public class CatalogueSearchPage {
      * Returns the course number entered by the user
      * @return the course number
      */
-    public int getCourseNumber() {
-        return Integer.parseInt(courseNumber.getText());
+    public String getCourseNumber() {
+        return courseNumber.getText();
+    }
+
+    public void addActionListener (ActionListener listenForCalculateButton){
+        searchButton.addActionListener(listenForCalculateButton);
+    }
+
+    public void setCourse(String course, String courseNum){
+        courseArea.append(course + " " + courseNum + " Exists");
+
     }
 
 }

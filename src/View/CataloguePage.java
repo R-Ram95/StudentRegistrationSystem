@@ -25,9 +25,6 @@ public class CataloguePage {
 //        test.add("ENSF 614");
 
 
-
-
-
         frame.setTitle("Show Catalogue Page");
 
         //configure the frame
