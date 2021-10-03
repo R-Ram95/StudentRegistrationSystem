@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class CourseModel{
     private String courseName;
     private String courseNumber;
-    private ArrayList <Course> preReqList;
-    private ArrayList <Offering> offeringList;
+    private ArrayList <CourseModel> preReqList;
+    private ArrayList <CourseOfferingModel> offeringList;
 
     public CourseModel(String courseName, String courseNumber){
         this.setCourseName(courseName);
         setCourseNumber(courseNumber);
 
         preReqList = new ArrayList<CourseModel>();
-        offeringList = new ArrayList<Offering>();
+        offeringList = new ArrayList<CourseOfferingModel>();
     }
 
     //adding a prerequisite for a course to the list
@@ -23,12 +23,12 @@ public class CourseModel{
 
     //adding a course offering to the list
     public void addOfferingList(int sectionNum, int capacity){
-        Offering offering = new Offering(sectionNum, capacity);
+        CourseOfferingModel offering = new CourseOfferingModel(sectionNum, capacity);
         offeringList.add(offering);
     }
 
-    public Offering matchOffering(int sectionNum){
-        for(Offering i: offeringList){
+    public CourseOfferingModel matchOffering(int sectionNum){
+        for(CourseOfferingModel i: offeringList){
             if(sectionNum == i.getSectionNum()){
                 return i;
             }
@@ -43,15 +43,15 @@ public class CourseModel{
         return this.preReqList;
     }
 
-    public void setPreReq(ArrayList<Course> preReq) {
+    public void setPreReq(ArrayList<CourseModel> preReq) {
         this.preReqList = preReq;
     }
 
-    public ArrayList<Offering> getOfferingList() {
+    public ArrayList<CourseOfferingModel> getOfferingList() {
         return this.offeringList;
     }
 
-    public void setOfferingList(ArrayList<Offering> offeringList) {
+    public void setOfferingList(ArrayList<CourseOfferingModel> offeringList) {
         this.offeringList = offeringList;
     }
 

@@ -9,7 +9,7 @@ public class CatalogueModel {
         catalogueList = loadFromDB();
     }
 
-    public CourseModel searchCatalogue(String courseName, String courseNumber){
+    public CourseModel searchCat(String courseName, String courseNumber){
         //this way is good for searching cause it wont do an out of bounds exception
         for(CourseModel c : catalogueList){
             if(c.getCourseName().equals(courseName) && c.getCourseNumber().equals(courseNumber)){

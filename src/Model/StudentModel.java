@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  * COPY PASTED FROM ASSIGNMENT1
  *
@@ -13,23 +15,23 @@ package Model;
 public class StudentModel {
     private String studentName;
     private int studentId;
-    private ArrayList<Registration> courseList;
+    private ArrayList<RegistrationModel> courseList;
 
     public StudentModel(String studentName, int studentId){
         this.studentName = studentName;
         this.studentId = studentId;
-        courseList = new ArrayList<Registration>();
+        courseList = new ArrayList<RegistrationModel>();
     }
 
     //facilitates adding a course
-    public void registerForCourse(CourseCat cat, String courseName, String courseNumber, int secNumber){
+    public void registerForCourse(CatalogueModel cat, String courseName, String courseNumber, int secNumber){
         if(courseList.size() >= 6){
             System.err.println("ERROR, You've already enrolled in the maximum number of courses.");
         }
 
         else{
             //search catalogue for the course
-            Course myCourse = cat.searchCat(courseName, courseNumber);
+            CourseModel myCourse = cat.searchCat(courseName, courseNumber);
 
             if(myCourse == null){
                 System.err.println("ERROR, Incorrect course or section number, please try again.");
@@ -41,9 +43,9 @@ public class StudentModel {
                 return;
             }
             //if the course exists, we need the section number
-            Offering theOffering = myCourse.matchOffering(secNumber);
+            CourseOfferingModel theOffering = myCourse.matchOffering(secNumber);
 
-            Registration reg = new Registration(this, theOffering);
+            RegistrationModel reg = new RegistrationModel(this, theOffering);
             //adds the course to the course list
             reg.addRegistration();
             System.out.println("You've successfully enrolled in " + courseName + " " + courseNumber);
@@ -54,7 +56,7 @@ public class StudentModel {
     //facilitates removing a course
     public void removeCourse(String courseName, String courseNumber, int sectionNum){
 
-        Registration registrationResult = searchList(courseName, courseNumber, sectionNum);
+        RegistrationModel registrationResult = searchList(courseName, courseNumber, sectionNum);
         if(registrationResult == null){
             return;
         }
@@ -62,12 +64,12 @@ public class StudentModel {
         System.out.println("You've successfully unenrolled in " + courseName + " " + courseNumber);
     }
 
-    public Registration searchList(String courseName, String courseNumber, int sectionNum){
+    public RegistrationModel searchList(String courseName, String courseNumber, int sectionNum){
         if(courseList.size() == 0){
             System.err.println("ERROR, You're not enrolled in any courses currently.");
         }
         else{
-            for(Registration course : this.getCourseList()){
+            for(RegistrationModel course : this.getCourseList()){
                 if(course.getOffering().getCourse().getCourseName().equals(courseName) && course.getOffering().getCourse()
                         .getCourseNumber().equals(courseNumber) && course.getOffering().getSectionNum() == sectionNum){
                     return course;
@@ -80,8 +82,8 @@ public class StudentModel {
         return null;
     }
 
-    public Registration searchCourseList(String courseName, String courseNumber){
-        for(Registration course : this.getCourseList()){
+    public RegistrationModel searchCourseList(String courseName, String courseNumber){
+        for(RegistrationModel course : this.getCourseList()){
             if(course.getOffering().getCourse().getCourseName().equals(courseName) && course.getOffering().getCourse()
                     .getCourseNumber().equals(courseNumber)){
                 return course;
@@ -92,15 +94,15 @@ public class StudentModel {
 
     public void printCourseList(){
         System.out.print("Registered Courses: ");
-        for(Registration course : courseList){
+        for(RegistrationModel course : courseList){
             System.out.print(course.getOffering().getCourse() + " ");
         }
         System.out.println("");
     }
 
-    public Student studentLogin(ArrayList<Student> students, String name, int id){
+    public StudentModel studentLogin(ArrayList<StudentModel> students, String name, int id){
 
-        for(Student search:students){
+        for(StudentModel search:students){
             //if the student name in the list is the same as the one inputted
             if(search.getStudentName().equals(name) && search.getStudentId() == id){
                 //then this is the student
@@ -111,16 +113,16 @@ public class StudentModel {
         return null;
     }
 
-    public void addRegistration(Registration reg){
+    public void addRegistration(RegistrationModel reg){
         courseList.add(reg);
     }
 
-    public void removeRegistration(Registration reg){
+    public void removeRegistration(RegistrationModel reg){
         courseList.remove(reg);
     }
 
     //getters and setters
-    public ArrayList<Registration> getCourseList(){
+    public ArrayList<RegistrationModel> getCourseList(){
         return courseList;
     }
 
