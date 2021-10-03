@@ -8,24 +8,35 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginController implements ActionListener {
+public class LoginController {
 
     LoginPage login;
     StudentList list;
 
+//    public static void main(String[] args) {
+////        RegistrationApp app = new RegistrationApp();
+////        app.displayApp();
+//
+//        LoginPage login = new LoginPage();
+////        StudentList list = new StudentList();
+////        LoginController controller= new LoginController(login, list);
+//
+//    }
+
     public LoginController(LoginPage login, StudentList list){
         this.login = login;
         this.list = list;
-
-        login.getButton().addActionListener(this);
     }
 
-
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == login.getButton()){
-            RegistrationApp myApp = new RegistrationApp();
-            myApp.displayApp();
+    class LoginListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            login.getButton().addActionListener(this);
+            if(e.getSource() == login.getButton()){
+                RegistrationApp myApp = new RegistrationApp();
+                myApp.displayApp();
         }
+    }
+
     }
 
 }

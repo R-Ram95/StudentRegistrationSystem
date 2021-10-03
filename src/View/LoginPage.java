@@ -62,6 +62,7 @@ public class LoginPage{
 //        }
 //    }
     public void addActionListener(ActionListener buttonClicked){
+
         button.addActionListener(buttonClicked);
     }
 

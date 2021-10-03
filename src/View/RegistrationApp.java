@@ -57,15 +57,6 @@ public class RegistrationApp implements ActionListener {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-//        RegistrationApp app = new RegistrationApp();
-//        app.displayApp();
-
-        LoginPage login = new LoginPage();
-        StudentList list = new StudentList();
-        LoginConstroller = new LoginController(login, list);
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -79,7 +70,9 @@ public class RegistrationApp implements ActionListener {
         // catalogue button pressed
         if(e.getSource() == catalogueButton){
             catalogue = new CataloguePage();
-            catalogue.displayGUI();
+            catalogue.setButton(catalogueButton);
+//            catalogue.displayGUI();
+
         }
 
         // registration button pressed
@@ -93,6 +86,17 @@ public class RegistrationApp implements ActionListener {
             registered = new StudentCoursesPage();
             registered.displayGUI();
         }
+
+    }
+
+    public static void main(String[] args) {
+//        RegistrationApp app = new RegistrationApp();
+//        app.displayApp();
+
+        LoginPage login = new LoginPage();
+        StudentList list = new StudentList();
+        LoginController controller= new LoginController(login, list);
+
 
     }
 }

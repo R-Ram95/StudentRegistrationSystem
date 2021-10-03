@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public class StudentCoursesPage {
 
+    private JButton button;
+
     public void displayGUI() {
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -42,8 +44,13 @@ public class StudentCoursesPage {
             panel.add(courseLabel);
             length = length + 50;
         }
-
-
         frame.setVisible(true);
+    }
+    public void setButton(JButton button){
+        this.button = button;
+    }
+
+    public JButton getButton(){
+        return button;
     }
 }
