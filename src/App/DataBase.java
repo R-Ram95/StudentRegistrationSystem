@@ -2,14 +2,18 @@ package App;
 
 import Model.CourseModel;
 import Model.CourseOfferingModel;
-
+import Model.StudentModel;
 import java.util.ArrayList;
 
 public class DataBase {
 
     ArrayList<CourseModel> courses = new ArrayList<>();
+    ArrayList<StudentModel> studentList = new ArrayList<>();
 
-
+    /**
+     * Creates an imaginary database for course in the catalogue
+     * @return
+     */
     public ArrayList<CourseModel> loadCatalogueFromDB(){
 
         courses.add(new CourseModel("ENGG", "233"));
@@ -36,7 +40,18 @@ public class DataBase {
                 o.setCourse(c);
             }
         }
-
         return courses;
+    }
+
+    /**
+     * Creates an imaginary database for students.
+     * @return
+     */
+    public ArrayList<StudentModel> loadStudentsFromDB(){
+        studentList.add(new StudentModel("Holly", 1));
+        studentList.add(new StudentModel("Karen", 2));
+        studentList.add(new StudentModel("Josh", 3));
+
+        return studentList;
     }
 }
