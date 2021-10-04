@@ -71,7 +71,8 @@ public class CourseModel{
         this.courseNumber = courseNumber;
     }
 
-    public String listOfferingList(){
+    @Override
+    public String toString(){
 
         String offeringListString = "";
 
@@ -82,8 +83,8 @@ public class CourseModel{
         return offeringListString;
     }
 
-    @Override
-    public String toString(){
-        return this.courseName + " " + this.courseNumber.toString();
-    }
+//    @Override
+//    public String toString(){
+//        return this.courseName + " " + this.courseNumber.toString();
+//    }
 }

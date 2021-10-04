@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+
 import Controller.CourseController;
 
 /**
@@ -70,7 +72,7 @@ public class CatalogueSearchPage {
     }
 
     public void setCourse(String course, String courseNum, String offeringList){
-        courseArea.setText(course + " " + courseNum + " Exists for the following offerings: " + offeringList);
+        courseArea.setText(course + " " + courseNum + " Exists for the following offerings: \n" + offeringList);
 
     }
 
