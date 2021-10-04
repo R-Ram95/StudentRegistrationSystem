@@ -1,6 +1,3 @@
-import View.LoginPage;
-import View.StudentCoursesPage;
-
 public class Main {
 
     public static void main(String[] args) {
