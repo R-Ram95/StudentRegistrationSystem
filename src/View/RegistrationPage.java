@@ -20,34 +20,30 @@ public class RegistrationPage extends JFrame {
 
     public void displayGUI(){
         JFrame frame = new JFrame("Registration Page");
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
+        frame.setSize(600, 200);
 
-        frame.setSize(400, 200);
-
-        // formant components
-        courseNameLabel.setBounds(10,20, 100, 25);
-        courseName.setBounds(150, 20, 165, 25);
-
-        courseNumberLabel.setBounds(10, 50, 100, 25);
-        courseNumber.setBounds(150,50, 165, 25 );
-
-        sectionlabel.setBounds(10, 80, 100, 25);
-        courseSection.setBounds(150, 80, 165, 25);
-
-        registrationButton.setBounds(10, 125, 165, 25);
-        unregisterButton.setBounds(180, 125, 165, 25);
-
+        // registration panel
+        JPanel regPanel = new JPanel();
+        regPanel.setLayout(new GridLayout(4,2));
         // add components to panel
-        panel.add(courseNameLabel);
-        panel.add(courseName);
-        panel.add(courseNumberLabel);
-        panel.add(courseNumber);
-        panel.add(sectionlabel);
-        panel.add(courseSection);
-        panel.add(registrationButton);
-        panel.add(unregisterButton);
+        regPanel.add(courseNameLabel);
+        regPanel.add(courseName);
+        regPanel.add(courseNumberLabel);
+        regPanel.add(courseNumber);
+        regPanel.add(sectionlabel);
+        regPanel.add(courseSection);
+        regPanel.add(registrationButton);
+        regPanel.add(unregisterButton);
 
+        // Login Panel
+        LoginView loginPanel = new LoginView();
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(loginPanel, BorderLayout.CENTER);
+        panel.add(regPanel, BorderLayout.SOUTH);
+
+        // add registration view
         frame.add(panel);
         frame.setVisible(true);
     }
