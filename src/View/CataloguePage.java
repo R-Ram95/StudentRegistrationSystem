@@ -18,16 +18,10 @@ public class CataloguePage extends JFrame{
     private JTextArea textArea = new JTextArea();
 
 
-    public CataloguePage(){
+    public void displayGUI(){
 
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
-
-//        ArrayList<String> test = new ArrayList<>();
-//        test.add("ENSF 611");
-//        test.add("ENSF 612");
-//        test.add("ENSF 614");
-
 
         frame.setTitle("Show Catalogue Page");
 
@@ -44,26 +38,17 @@ public class CataloguePage extends JFrame{
         label.setBounds(10, 20, 800, 25);
         panel.add(label);
 
-//        int length = 70;
         textArea.setFont(new Font("Serif", Font.ITALIC, 16));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
 
 
-
-
-//        for(int i = 0; i<controller.getTheList.size(); i++){
-////            JLabel courseLabel = new JLabel(test.get(i));
-//            JLabel courseLabel = new JLabel(controller.getTheList());
-//            courseLabel.setBounds(10, length, 80, 25);
-//            panel.add(courseLabel);
-//            length = length + 50;
-//        }
         frame.setVisible(true);
     }
 
     public void setTheView(String text){
-        textArea = new JTextArea("" + controller.getTheList());
+//        textArea = new JTextArea("" + controller.getTheList());
+        textArea = new JTextArea(text);
     }
 
 

@@ -71,7 +71,7 @@ public class RegistrationApp implements ActionListener {
 
         // catalogue button pressed
         if(e.getSource() == catalogueButton){
-            catalogue = new CataloguePage();
+            controller = new CatalogueController();
             //something missing here
         }
 

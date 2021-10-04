@@ -26,12 +26,16 @@ public class CatalogueController {
     class CatalogueListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            view.setTheView(getTheList());
+            view.displayGUI();
+            view.setTheView(model.toString());
         }
     }
-
     //gets the string version of the toString method in the model
     public String getTheList(){
         return model.toString();
+    }
+
+    public CatalogueModel getModel(){
+        return model;
     }
 }
