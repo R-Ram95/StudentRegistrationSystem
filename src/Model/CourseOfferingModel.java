@@ -65,5 +65,16 @@ public class CourseOfferingModel {
         this.sectionCap = sectionCap;
     }
 
+    @Override
+    public String toString(){
+
+        StringBuffer buffer = new StringBuffer();
+
+        buffer.append("Section Number: " + getSectionNum() + "\n");
+        buffer.append("Section Capacity: " + getSectionCap() + "\n");
+
+        return buffer.toString();
+    }
+
 }
 
