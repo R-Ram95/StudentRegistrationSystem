@@ -18,7 +18,7 @@ public class RegistrationPage extends JFrame {
     private JButton registrationButton = new JButton("Register");
     private JButton unregisterButton = new JButton("Unregister");
 
-    public void displayGUI(){
+    public void displayGUI(LoginView loginPanel){
         JFrame frame = new JFrame("Registration Page");
         frame.setSize(600, 200);
 
@@ -34,9 +34,6 @@ public class RegistrationPage extends JFrame {
         regPanel.add(courseSection);
         regPanel.add(registrationButton);
         regPanel.add(unregisterButton);
-
-        // Login Panel
-        LoginView loginPanel = new LoginView();
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());

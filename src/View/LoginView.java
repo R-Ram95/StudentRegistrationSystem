@@ -12,28 +12,31 @@ import java.awt.event.ActionListener;
 public class LoginView extends JPanel{
     JButton loginButton = new JButton("Login");
     JTextField nameText = new JTextField(10);
-    JTextField stuNumText = new JTextField(10);
+    JTextField studentIdText = new JTextField(10);
 
     public LoginView(){
         JLabel nameLabel = new JLabel("Student Name: ");
         add(nameLabel);
         add(nameText);
-        JLabel stuNumLabel = new JLabel("Student Number: ");
-        add(stuNumLabel);
-        add(stuNumText);
+        JLabel studentIdLabel = new JLabel("Student Number: ");
+        add(studentIdLabel);
+        add(studentIdText);
         add(loginButton);
     }
 
-    public void addActionListener(ActionListener buttonClicked){
-        loginButton.addActionListener(buttonClicked);
+    public void addLoginListener(ActionListener listenForLogin){
+        loginButton.addActionListener(listenForLogin);
     }
 
     public String getStudentName() {
         return nameText.getText();
     }
 
-    public int getStudentNumber() {
-        return Integer.parseInt(stuNumText.getText());
+    public int getStudentId() {
+        return Integer.parseInt(studentIdText.getText());
     }
 
+    public void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
 }

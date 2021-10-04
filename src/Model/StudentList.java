@@ -20,15 +20,15 @@ public class StudentList {
      * @return the Student
      * @throws NoSuchElementException student not found
      */
-    public StudentModel searchStudentList(int studentId) throws NoSuchElementException{
+    public StudentModel searchStudentList(String studentName, int studentId) throws NumberFormatException{
 
         for (StudentModel s : studentList){
             // student found
-            if(s.getStudentId() == studentId){
+            if(s.getStudentId() == studentId && s.getStudentName().equals(studentName)){
                 return s;
             }
         }
         // student not found
-        throw new NoSuchElementException();
+        throw new NumberFormatException();
     }
 }

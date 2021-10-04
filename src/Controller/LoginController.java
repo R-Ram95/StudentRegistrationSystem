@@ -1,40 +1,38 @@
 package Controller;
 
 import Model.StudentList;
-import View.LoginPage;
+import Model.StudentModel;
+import View.LoginView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.NoSuchElementException;
 
-public class LoginController {
+public class LoginController{
 
-    LoginPage login;
-    StudentList list;
+    LoginView loginView;
+    StudentList studentList;
+    StudentModel theStudent;
 
-//    public static void main(String[] args) {
-////        RegistrationApp app = new RegistrationApp();
-////        app.displayApp();
-//
-//        LoginPage login = new LoginPage();
-////        StudentList list = new StudentList();
-////        LoginController controller= new LoginController(login, list);
-//
-//    }
-
-    public LoginController(LoginPage login, StudentList list){
-        this.login = login;
-        this.list = list;
+    public LoginController(StudentList list, LoginView login){
+        loginView = login;
+        studentList = list;
+        loginView.addLoginListener(new LoginListener());
     }
 
-//    class LoginListener implements ActionListener{
-//        public void actionPerformed(ActionEvent e){
-//            login.getButton().addActionListener(this);
-//            if(e.getSource() == login.getButton()){
-//                RegistrationApp myApp = new RegistrationApp();
-//                myApp.displayApp();
-//        }
-//    }
-//
-//    }
+    class LoginListener implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String studentName = loginView.getStudentName();
+            int studentId = loginView.getStudentId();
+
+                try {
+                // search for student
+                theStudent = studentList.searchStudentList(studentName, studentId);
+            }catch(NumberFormatException e1){
+                loginView.displayErrorMessage("ERROR: Student not found.");
+            }
+        }
+    }
 }

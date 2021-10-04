@@ -1,6 +1,7 @@
 import Controller.LoginController;
 import Model.CatalogueModel;
 import Controller.CatalogueController;
+import Model.StudentList;
 import View.*;
 import Controller.*;
 import View.CatalogueSearchPage;
@@ -25,6 +26,8 @@ public class RegistrationApp implements ActionListener {
     private RegistrationPage registration;
     private StudentCoursesPage registered;
 
+    private LoginView loginView;
+
     public RegistrationApp(){
         searchButton.addActionListener(this);
         catalogueButton.addActionListener(this);
@@ -40,6 +43,11 @@ public class RegistrationApp implements ActionListener {
         search = new CatalogueSearchPage();
         CatalogueModel catalogueModel = new CatalogueModel();
         CourseController courseController = new CourseController(catalogueModel, search);
+
+        // Student login
+        loginView = new LoginView();
+        StudentList studentList = new StudentList();
+        LoginController loginController = new LoginController(studentList ,loginView);
 
     }
 
@@ -80,16 +88,10 @@ public class RegistrationApp implements ActionListener {
             search.displayGUI();
         }
 
-//        // catalogue button pressed
-//        if(e.getSource() == catalogueButton){
-//            controller = new CatalogueController();
-//            //something missing here
-//        }
-
         // registration button pressed
         if(e.getSource() == registrationButton){
             registration = new RegistrationPage();
-            registration.displayGUI();
+            registration.displayGUI(loginView);
         }
 
         // registered button pressed
@@ -99,23 +101,5 @@ public class RegistrationApp implements ActionListener {
         }
 
     }
-
-    public void addActionListener(ActionListener listenForCalculateButton){
-        catalogueButton.addActionListener(listenForCalculateButton);
-    }
-
-//    public static void main(String[] args) {
-////        RegistrationApp app = new RegistrationApp();
-////        app.displayApp();
-//
-//        LoginPage login = new LoginPage();
-//        StudentList list = new StudentList();
-//        LoginController controller= new LoginController(login, list);
-//
-//
-//    }
-
-
-
 
 }
