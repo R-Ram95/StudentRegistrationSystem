@@ -9,48 +9,27 @@ import java.util.ArrayList;
  */
 public class StudentCoursesPage {
 
-    private JButton button;
+    JTextArea courseArea = new JTextArea(20, 30);
 
-    public void displayGUI() {
-        JPanel panel = new JPanel();
+    public void displayGUI(LoginView loginView) {
         JFrame frame = new JFrame();
-
-//        ArrayList<String> test = new ArrayList<>();
-//        test.add("ENSF 611");
-//        test.add("ENSF 612");
-//        test.add("ENSF 614");
-
+        frame.setSize(600, 400);
         frame.setTitle("Show Student Courses");
 
-        //configure the frame
-        frame.setSize(700, 500);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        panel.add(loginView);
+        panel.add(new JTextField("Student's Courses"));
+        panel.add(courseArea);
+
+
         frame.add(panel);
-
-        //Set the layout
-        panel.setLayout(null);
-
-        JLabel label = new JLabel("Student is enrolled in the following classes: ");
-        Font font = new Font("Courier", Font.BOLD,15);
-        label.setFont(font);
-        label.setBounds(10, 20, 800, 25);
-        panel.add(label);
-
-
-        int length = 70;
-
-//        for(int i = 0; i<test.size(); i++){
-//            JLabel courseLabel = new JLabel(test.get(i));
-//            courseLabel.setBounds(10, length, 80, 25);
-//            panel.add(courseLabel);
-//            length = length + 50;
-//        }
         frame.setVisible(true);
     }
-    public void setButton(JButton button){
-        this.button = button;
+
+    public void setStudentCourses(String text){
+        courseArea.setText(text);
     }
 
-    public JButton getButton(){
-        return button;
-    }
 }

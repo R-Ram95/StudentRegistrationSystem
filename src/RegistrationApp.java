@@ -97,7 +97,7 @@ public class RegistrationApp implements ActionListener {
         // registered button pressed
         if(e.getSource() == registeredButton){
             registered = new StudentCoursesPage();
-            registered.displayGUI();
+            registered.displayGUI(loginView);
         }
 
     }
