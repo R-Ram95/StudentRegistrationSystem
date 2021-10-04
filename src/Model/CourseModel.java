@@ -71,8 +71,9 @@ public class CourseModel{
         this.courseNumber = courseNumber;
     }
 
-    @Override
-    public String toString(){
+//    @Override
+    //get the string for the course offering list
+    public String getString(){
         StringBuffer string = new StringBuffer();
 //        String offeringListString = "";
 
@@ -80,6 +81,13 @@ public class CourseModel{
             string.append(o);
         }
         return string.toString();
+    }
+
+    @Override
+    public String toString(){
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(courseName + " " + courseNumber + "\n");
+        return buffer.toString();
     }
 
 //    @Override

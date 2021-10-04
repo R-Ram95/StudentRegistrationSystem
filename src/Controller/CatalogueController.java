@@ -28,7 +28,7 @@ public class CatalogueController {
     }
     //gets the string version of the toString method in the model
     public String getTheList(){
-        return model.getString();
+        return model.toString();
     }
 
     public CatalogueModel getModel(){
