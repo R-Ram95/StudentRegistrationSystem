@@ -2,6 +2,7 @@ package View;
 
 import Controller.LoginController;
 import Model.StudentList;
+import Controller.CatalogueController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ public class RegistrationApp implements ActionListener {
     private CataloguePage catalogue;
     private RegistrationPage registration;
     private StudentCoursesPage registered;
+    private CatalogueController controller;
 
     public RegistrationApp(){
         searchButton.addActionListener(this);
@@ -70,9 +72,7 @@ public class RegistrationApp implements ActionListener {
         // catalogue button pressed
         if(e.getSource() == catalogueButton){
             catalogue = new CataloguePage();
-            catalogue.setButton(catalogueButton);
-//            catalogue.displayGUI();
-
+            //something missing here
         }
 
         // registration button pressed
@@ -89,14 +89,22 @@ public class RegistrationApp implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-//        RegistrationApp app = new RegistrationApp();
-//        app.displayApp();
-
-        LoginPage login = new LoginPage();
-        StudentList list = new StudentList();
-        LoginController controller= new LoginController(login, list);
-
-
+    public void addActionListener(ActionListener listenForCalculateButton){
+        catalogueButton.addActionListener(listenForCalculateButton);
     }
+
+//    public static void main(String[] args) {
+////        RegistrationApp app = new RegistrationApp();
+////        app.displayApp();
+//
+//        LoginPage login = new LoginPage();
+//        StudentList list = new StudentList();
+//        LoginController controller= new LoginController(login, list);
+//
+//
+//    }
+
+
+
+
 }

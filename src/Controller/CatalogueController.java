@@ -12,25 +12,25 @@ import java.util.ArrayList;
 public class CatalogueController {
     CatalogueModel model;
     CataloguePage view;
+    RegistrationApp reg;
 
-    CatalogueController(CatalogueModel model, CataloguePage view){
+    CatalogueController(CatalogueModel model, CataloguePage view, RegistrationApp reg){
         this.model = model;
         this.view = view;
+        this.reg = reg;
 
-        view.getButton().addActionListener(new CatalogueListener());
+        reg.addActionListener(new CatalogueListener());
     }
 
 
     class CatalogueListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == view.getButton()) {
-//                RegistrationApp myApp = new RegistrationApp();
-//                myApp.displayApp();
-                view.displayGUI(view.getButton());
-            }
+            view.setTheView(getTheList());
         }
     }
+
+    //gets the string version of the toString method in the model
     public String getTheList(){
         return model.toString();
     }

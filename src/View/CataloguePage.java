@@ -10,12 +10,16 @@ import java.util.ArrayList;
 /**
  * Shows full Catalogue
  */
-public class CataloguePage {
+public class CataloguePage extends JFrame{
 
     private CatalogueController controller;
-    private JButton button;
+//    private JButton button;
 
-    public void displayGUI(JButton button) {
+    private JTextArea textArea = new JTextArea();
+
+
+    public CataloguePage(){
+
         JPanel panel = new JPanel();
         JFrame frame = new JFrame();
 
@@ -41,8 +45,6 @@ public class CataloguePage {
         panel.add(label);
 
 //        int length = 70;
-
-        JTextArea textArea = new JTextArea("" + controller.getTheList());
         textArea.setFont(new Font("Serif", Font.ITALIC, 16));
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -60,12 +62,8 @@ public class CataloguePage {
         frame.setVisible(true);
     }
 
-    public void setButton(JButton button){
-        this.button = button;
-    }
-
-    public JButton getButton(){
-        return button;
+    public void setTheView(String text){
+        textArea = new JTextArea("" + controller.getTheList());
     }
 
 
