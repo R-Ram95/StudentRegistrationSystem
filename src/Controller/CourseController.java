@@ -23,9 +23,6 @@ public class CourseController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            if (e.getSource() == view.getButton()) {
-//                RegistrationApp myApp = new RegistrationApp();
-//                myApp.displayApp();
             courseName = view.getCourseName();
             courseNum = view.getCourseNumber();
             CourseModel courseFound = model.searchCat(courseName, courseNum);

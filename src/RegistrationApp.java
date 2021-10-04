@@ -1,8 +1,8 @@
 import Controller.LoginController;
 import Model.CatalogueModel;
-import Model.StudentList;
 import Controller.CatalogueController;
-import View.CataloguePage;
+import View.*;
+import Controller.*;
 import View.CatalogueSearchPage;
 import View.RegistrationPage;
 import View.StudentCoursesPage;
@@ -22,10 +22,8 @@ public class RegistrationApp implements ActionListener {
     private JButton registeredButton = new JButton("List Registered Courses");
 
     private CatalogueSearchPage search;
-    private CataloguePage catalogue;
     private RegistrationPage registration;
     private StudentCoursesPage registered;
-    private CatalogueController controller;
 
     public RegistrationApp(){
         searchButton.addActionListener(this);
@@ -34,7 +32,15 @@ public class RegistrationApp implements ActionListener {
         registeredButton.addActionListener(this);
 
         // Models and Controllers here
+        CataloguePage catView = new CataloguePage();
         CatalogueModel catMod = new CatalogueModel();
+        CatalogueController catCon = new CatalogueController(catMod, catView);
+
+        // Catalogue search
+        search = new CatalogueSearchPage();
+        CatalogueModel catalogueModel = new CatalogueModel();
+        CourseController courseController = new CourseController(catalogueModel, search);
+
     }
 
     public void displayApp() {
@@ -71,7 +77,6 @@ public class RegistrationApp implements ActionListener {
 
         // search button pressed
         if(e.getSource() == searchButton){
-            search = new CatalogueSearchPage();
             search.displayGUI();
         }
 

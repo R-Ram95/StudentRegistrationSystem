@@ -65,12 +65,12 @@ public class CatalogueSearchPage {
         return courseNumber.getText();
     }
 
-    public void addActionListener (ActionListener listenForCalculateButton){
-        searchButton.addActionListener(listenForCalculateButton);
+    public void addActionListener (ActionListener listenForSearchButton){
+        searchButton.addActionListener(listenForSearchButton);
     }
 
     public void setCourse(String course, String courseNum){
-        courseArea.append(course + " " + courseNum + " Exists");
+        courseArea.setText(course + " " + courseNum + " Exists");
 
     }
 

@@ -51,6 +51,4 @@ public class CataloguePage extends JFrame{
         textArea = new JTextArea(text);
     }
 
-
-
 }

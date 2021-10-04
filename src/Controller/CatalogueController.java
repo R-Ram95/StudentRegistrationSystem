@@ -10,7 +10,7 @@ public class CatalogueController {
     CatalogueModel model;
     CataloguePage view;
 
-    CatalogueController(CatalogueModel model, CataloguePage view){
+    public CatalogueController(CatalogueModel model, CataloguePage view){
         this.model = model;
         this.view = view;
     }
