@@ -2,9 +2,7 @@ package Controller;
 
 import Model.StudentList;
 import View.LoginPage;
-import View.RegistrationApp;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,15 +26,15 @@ public class LoginController {
         this.list = list;
     }
 
-    class LoginListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            login.getButton().addActionListener(this);
-            if(e.getSource() == login.getButton()){
-                RegistrationApp myApp = new RegistrationApp();
-                myApp.displayApp();
-        }
-    }
-
-    }
+//    class LoginListener implements ActionListener{
+//        public void actionPerformed(ActionEvent e){
+//            login.getButton().addActionListener(this);
+//            if(e.getSource() == login.getButton()){
+//                RegistrationApp myApp = new RegistrationApp();
+//                myApp.displayApp();
+//        }
+//    }
+//
+//    }
 
 }

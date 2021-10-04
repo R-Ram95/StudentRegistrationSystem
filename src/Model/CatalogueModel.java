@@ -1,16 +1,17 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.List;
+import App.*;
 
 public class CatalogueModel{
     ArrayList<CourseModel> courseList;
+    DataBase db = new DataBase();
 
     //load a course catalog, a page comes up
     //supposed to load courses from a database...
     public CatalogueModel(){
         courseList = new ArrayList<CourseModel>();
-        courseList = loadFromDB();
+        courseList = db.loadCatalogueFromDB();
     }
 
     public void listCourses(){
@@ -39,37 +40,6 @@ public class CatalogueModel{
 
     public ArrayList<CourseModel> getList(){
         return courseList;
-    }
-
-    //imitate loading from a database
-    private static ArrayList<CourseModel> loadFromDB(){
-        //irl, courses will be loaded from the DB or at least some file on disk,
-        //for now just imagine, this is all coming from a DB
-        ArrayList<CourseModel> imaginaryDB = new ArrayList<CourseModel>();
-        //creating a new course object
-        imaginaryDB.add(new CourseModel("ENGG", "233"));
-        imaginaryDB.add(new CourseModel("PHYS", "259"));
-        imaginaryDB.add(new CourseModel("ENSF", "607"));
-
-        //Adding the prerequisite (1) to add 3 courses
-        for(CourseModel course : imaginaryDB){
-            course.addPrereq(new CourseModel("ENGG", "232"));
-        }
-
-        //Linking section number and capacity to each course, two offerings each course
-        for(CourseModel course : imaginaryDB){
-            //offering 1: section 1, capacity 50
-            course.addOfferingList(1, 50);
-            //offering 2: section 2, capacity 50
-            course.addOfferingList(2, 80);
-
-            //it sets the course
-            for(CourseOfferingModel offering : course.getOfferingList()){
-                offering.setCourse(course);
-            }
-        }
-        return imaginaryDB;
-
     }
 
     //can create offering for every course

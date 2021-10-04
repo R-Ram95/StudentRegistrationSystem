@@ -1,15 +1,18 @@
-package View;
-
 import Controller.LoginController;
+import Model.CatalogueModel;
 import Model.StudentList;
 import Controller.CatalogueController;
+import View.CataloguePage;
+import View.CatalogueSearchPage;
+import View.RegistrationPage;
+import View.StudentCoursesPage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * View.Main interface for app
+ * Main interface for app
  */
 public class RegistrationApp implements ActionListener {
 
@@ -29,6 +32,9 @@ public class RegistrationApp implements ActionListener {
         catalogueButton.addActionListener(this);
         registrationButton.addActionListener(this);
         registeredButton.addActionListener(this);
+
+        // Models and Controllers here
+        CatalogueModel catMod = new CatalogueModel();
     }
 
     public void displayApp() {
@@ -69,11 +75,11 @@ public class RegistrationApp implements ActionListener {
             search.displayGUI();
         }
 
-        // catalogue button pressed
-        if(e.getSource() == catalogueButton){
-            controller = new CatalogueController();
-            //something missing here
-        }
+//        // catalogue button pressed
+//        if(e.getSource() == catalogueButton){
+//            controller = new CatalogueController();
+//            //something missing here
+//        }
 
         // registration button pressed
         if(e.getSource() == registrationButton){

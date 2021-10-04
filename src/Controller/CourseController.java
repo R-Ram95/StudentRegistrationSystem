@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.CatalogueModel;
-import View.RegistrationApp;
 import View.CatalogueSearchPage;
 import Model.CourseModel;
 
