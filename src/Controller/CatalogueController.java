@@ -13,19 +13,22 @@ public class CatalogueController {
     public CatalogueController(CatalogueModel model, CataloguePage view){
         this.model = model;
         this.view = view;
+
+        view.addActionListener(new CatalogueListener());
     }
 
 
     class CatalogueListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            view.displayGUI();
-            view.setTheView(model.toString());
+//            view.displayGUI();
+            String courses = model.getString();
+            view.setTheView(courses);
         }
     }
     //gets the string version of the toString method in the model
     public String getTheList(){
-        return model.toString();
+        return model.getString();
     }
 
     public CatalogueModel getModel(){

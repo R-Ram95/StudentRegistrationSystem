@@ -19,13 +19,18 @@ public class CatalogueModel{
         System.out.println(this);
     }
 
-    @Override
-    public String toString(){
-        String temp = "";
+//    @Override
+    public String getString(){
+        StringBuffer attempt = new StringBuffer();
         for(CourseModel c: courseList){
-            temp += c + "\n";
+            attempt.append(c + "\n");
         }
-        return temp;
+        return attempt.toString();
+//        String temp = "";
+//        for(CourseModel c: courseList){
+//            temp += c + "\n";
+//        }
+//        return temp;
     }
     public CourseModel searchCat(String courseName, String courseNumber){
         //this way is good for searching cause it wont do an out of bounds exception

@@ -73,14 +73,13 @@ public class CourseModel{
 
     @Override
     public String toString(){
-
-        String offeringListString = "";
+        StringBuffer string = new StringBuffer();
+//        String offeringListString = "";
 
         for(CourseOfferingModel o: offeringList){
-//            System.out.println(o);
-            offeringListString += o;
+            string.append(o);
         }
-        return offeringListString;
+        return string.toString();
     }
 
 //    @Override

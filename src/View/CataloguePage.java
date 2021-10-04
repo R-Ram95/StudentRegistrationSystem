@@ -15,40 +15,56 @@ public class CataloguePage extends JFrame{
     private CatalogueController controller;
 //    private JButton button;
 
-    private JTextArea textArea = new JTextArea();
-
+    private JTextArea textArea = new JTextArea(100, 100);
+    private JButton goButton  = new JButton("Show All Courses");
+    private JTextArea courseArea = new JTextArea();
+    private JLabel label = new JLabel("All Courses: ");
+    private JPanel panel;
 
     public void displayGUI(){
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         JFrame frame = new JFrame();
-
         frame.setTitle("Show Catalogue Page");
 
         //configure the frame
-        frame.setSize(700, 500);
-        frame.add(panel);
+        frame.setSize(400, 400);
 
-        //Set the layout
-        panel.setLayout(null);
+        goButton.setBounds(75, 10, 200, 25);
 
-        JLabel label = new JLabel("All the courses available in the catalogue: ");
+        label.setBounds(10, 30, 350, 20);
         Font font = new Font("Courier", Font.BOLD,15);
         label.setFont(font);
-        label.setBounds(10, 20, 800, 25);
+        label.setVisible(false);
+        courseArea.setWrapStyleWord(true);
+        courseArea.setLineWrap(true);
+
+        courseArea.setBounds(10, 60, 365, 380);
+        courseArea.setEditable(false);
+
+        //Set the layout
+        panel.add(goButton);
+        panel.setLayout(null);
+        panel.add(courseArea);
         panel.add(label);
 
-        textArea.setFont(new Font("Serif", Font.ITALIC, 16));
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-
-
+        frame.add(panel);
         frame.setVisible(true);
     }
 
-    public void setTheView(String text){
-//        textArea = new JTextArea("" + controller.getTheList());
-        textArea = new JTextArea(text);
+    public void addActionListener(ActionListener ListenForSearchButton) {
+        goButton.addActionListener(ListenForSearchButton);
     }
+
+    public void setTheView(String text){
+        label.setVisible(true);
+        courseArea.setText(text);
+//
+//        textArea.setFont(new Font("Serif", Font.ITALIC, 16));
+//        textArea.setLineWrap(true);
+//        textArea.setWrapStyleWord(true);
+//        textArea = new JTextArea(text);
+    }
+
 
 }
