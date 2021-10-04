@@ -27,8 +27,8 @@ public class CourseController {
             courseNum = view.getCourseNumber();
             CourseModel courseFound = model.searchCat(courseName, courseNum);
             if(courseFound!=null){
-                int sectionNum = courseFound.getOfferingList();
-                view.setCourse(courseName, courseNum);
+                String offeringList = courseFound.listOfferingList();
+                view.setCourse(courseName, courseNum, offeringList);
             }
             }
         }

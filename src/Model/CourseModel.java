@@ -71,6 +71,17 @@ public class CourseModel{
         this.courseNumber = courseNumber;
     }
 
+    public String listOfferingList(){
+
+        String offeringListString = "";
+
+        for(CourseOfferingModel o: offeringList){
+//            System.out.println(o);
+            offeringListString += o;
+        }
+        return offeringListString;
+    }
+
     @Override
     public String toString(){
         return this.courseName + " " + this.courseNumber.toString();

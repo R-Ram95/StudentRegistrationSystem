@@ -69,8 +69,8 @@ public class CatalogueSearchPage {
         searchButton.addActionListener(listenForSearchButton);
     }
 
-    public void setCourse(String course, String courseNum){
-        courseArea.setText(course + " " + courseNum + " Exists");
+    public void setCourse(String course, String courseNum, String offeringList){
+        courseArea.setText(course + " " + courseNum + " Exists for the following offerings: " + offeringList);
 
     }
 
