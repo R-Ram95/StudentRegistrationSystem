@@ -12,7 +12,6 @@ public class CourseOfferingModel {
     public CourseOfferingModel(int sectionNum, int sectionCap){
         this.setSectionNum(sectionNum);
         this.setSectionCap(sectionCap);
-        // this.setCourse(theCourse);
         studentList = new ArrayList<RegistrationModel>();
         this.courseStatus = false;
     }

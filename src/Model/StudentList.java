@@ -20,7 +20,7 @@ public class StudentList {
      * @return the Student
      * @throws NoSuchElementException student not found
      */
-    public StudentModel searchStudentList(String studentName, int studentId) throws NumberFormatException{
+    public StudentModel searchStudentList(String studentName, int studentId){
 
         for (StudentModel s : studentList){
             // student found
@@ -28,7 +28,7 @@ public class StudentList {
                 return s;
             }
         }
-        // student not found
-        throw new NumberFormatException();
+        // student was not found
+        throw new NullPointerException();
     }
 }

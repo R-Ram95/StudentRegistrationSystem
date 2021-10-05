@@ -27,16 +27,6 @@ public class CourseModel{
         offeringList.add(offering);
     }
 
-    public CourseOfferingModel matchOffering(int sectionNum){
-        for(CourseOfferingModel i: offeringList){
-            if(sectionNum == i.getSectionNum()){
-                return i;
-            }
-        }
-        //could not find a matching section number
-        System.err.println("ERROR, Course cannot be found, please try again!");
-        return null;
-    }
 
     /**
      * Searches the courses offerings for the given section Number
@@ -108,8 +98,4 @@ public class CourseModel{
         return buffer.toString();
     }
 
-//    @Override
-//    public String toString(){
-//        return this.courseName + " " + this.courseNumber.toString();
-//    }
 }

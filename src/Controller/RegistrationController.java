@@ -22,6 +22,7 @@ public class RegistrationController {
         this.courseController = courseController;
 
         registrationView.addRegistrationActionListener(new RegistrationListener());
+        registrationView.addUnregistrationActionListener(new UnregistrationListener());
     }
 
     class RegistrationListener implements ActionListener{
@@ -39,7 +40,7 @@ public class RegistrationController {
                 // does course section exist
                 CourseOfferingModel theOffering = theCourse.searchOfferingList(courseSection);
 
-                theStudent.registerForCourse(theCourse, theOffering);
+                theStudent.registerForCourse(theOffering);
 
                 // registration was successful
                 registrationView.displayPlainMessage("Registration", "Course registered");
@@ -52,6 +53,32 @@ public class RegistrationController {
 
             }
             // the course was not found
+            catch(NullPointerException e1){
+                registrationView.displayErrorMessage("ERROR: Course not found.");
+            }
+        }
+    }
+
+    class UnregistrationListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                String courseName = registrationView.getCourseName();
+                int courseNumber = registrationView.getCourseNumber();
+                int courseSection = registrationView.getCourseSection();
+
+                theStudent = loginController.getTheStudent(); // get student from login
+                theStudent.removeCourse(courseName, Integer.toString(courseNumber), courseSection);
+                registrationView.displayPlainMessage("Registration", "Unregistered from Course.");
+
+            }
+            // user did not enter course information
+            catch (NumberFormatException e2){
+                registrationView.displayErrorMessage("ERROR: You must enter a course name, number, and section");
+
+            }
+            // course not found
             catch(NullPointerException e1){
                 registrationView.displayErrorMessage("ERROR: Course not found.");
             }

@@ -59,11 +59,6 @@ public class CataloguePage extends JFrame{
     public void setTheView(String text){
         label.setVisible(true);
         courseArea.setText(text);
-//
-//        textArea.setFont(new Font("Serif", Font.ITALIC, 16));
-//        textArea.setLineWrap(true);
-//        textArea.setWrapStyleWord(true);
-//        textArea = new JTextArea(text);
     }
 
 

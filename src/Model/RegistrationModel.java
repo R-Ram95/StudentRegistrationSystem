@@ -3,7 +3,6 @@ package Model;
 public class RegistrationModel {
     private StudentModel theStudent;
     private CourseOfferingModel theOffering;
-    // private char grade;
 
     public RegistrationModel(StudentModel theStudent, CourseOfferingModel theOffering){
         this.theStudent = theStudent;

@@ -7,8 +7,7 @@ public class CatalogueModel{
     ArrayList<CourseModel> courseList;
     DataBase db = new DataBase();
 
-    //load a course catalog, a page comes up
-    //supposed to load courses from a database...
+
     public CatalogueModel(){
         courseList = new ArrayList<CourseModel>();
         courseList = db.loadCatalogueFromDB();
@@ -35,7 +34,6 @@ public class CatalogueModel{
                 return c;
             }
         }
-        System.err.println("ERROR, Course " + courseName + " " + courseNumber + " does NOT exist!");
         return null;
     }
 
@@ -43,10 +41,6 @@ public class CatalogueModel{
         return courseList;
     }
 
-    //can create offering for every course
-    public static void createOffering(){
-
-    }
 
     public ArrayList<CourseModel> getCourseList(){
         return courseList;

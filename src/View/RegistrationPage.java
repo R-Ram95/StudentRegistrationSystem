@@ -78,6 +78,10 @@ public class RegistrationPage extends JFrame {
         registrationButton.addActionListener(listenForRegistratioButton);
     }
 
+    public void addUnregistrationActionListener(ActionListener listForUnregisterButton){
+        unregisterButton.addActionListener(listForUnregisterButton);
+    }
+
     /**
      * Displays an error message in a diaglog box.
      * @param errorMessage the message displayed

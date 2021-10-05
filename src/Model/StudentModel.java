@@ -24,7 +24,7 @@ public class StudentModel {
     }
 
     //facilitates adding a course
-    public void registerForCourse(CourseModel theCourse, CourseOfferingModel theOffering){
+    public void registerForCourse(CourseOfferingModel theOffering){
         // TODO add checking if student is registered in too many courses
 
         RegistrationModel reg = new RegistrationModel(this, theOffering);
@@ -33,41 +33,24 @@ public class StudentModel {
     }
 
     //facilitates removing a course
-    public void removeCourse(String courseName, String courseNumber, int sectionNum){
+    public void removeCourse(String courseName, String courseNumber, int sectionNum) throws NullPointerException{
 
         RegistrationModel registrationResult = searchList(courseName, courseNumber, sectionNum);
-        if(registrationResult == null){
-            return;
-        }
         registrationResult.removeRegistration();
-        System.out.println("You've successfully unenrolled in " + courseName + " " + courseNumber);
     }
 
     public RegistrationModel searchList(String courseName, String courseNumber, int sectionNum){
         if(courseList.size() == 0){
-            System.err.println("ERROR, You're not enrolled in any courses currently.");
-        }
-        else{
-            for(RegistrationModel course : this.getCourseList()){
-                if(course.getOffering().getCourse().getCourseName().equals(courseName) && course.getOffering().getCourse()
-                        .getCourseNumber().equals(courseNumber) && course.getOffering().getSectionNum() == sectionNum){
-                    return course;
-                }
-            }
-            //if traversed the entire list and didn't find course
-            System.err.println("ERROR, You're either not enrolled in this course, or entered the incorrect course or section number!");
             return null;
         }
-        return null;
-    }
 
-    public RegistrationModel searchCourseList(String courseName, String courseNumber){
-        for(RegistrationModel course : this.getCourseList()){
-            if(course.getOffering().getCourse().getCourseName().equals(courseName) && course.getOffering().getCourse()
+        for(RegistrationModel r : courseList){
+            if(r.getOffering().getCourse().getCourseName().equals(courseName) && r.getOffering().getCourse()
                     .getCourseNumber().equals(courseNumber)){
-                return course;
+                return r;
             }
         }
+
         return null;
     }
 
