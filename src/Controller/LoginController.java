@@ -27,12 +27,22 @@ public class LoginController{
             String studentName = loginView.getStudentName();
             int studentId = loginView.getStudentId();
 
-                try {
+            try {
                 // search for student
                 theStudent = studentList.searchStudentList(studentName, studentId);
-            }catch(NumberFormatException e1){
+            }catch(NullPointerException e1){
                 loginView.displayErrorMessage("ERROR: Student not found.");
             }
+
+            loginView.displayPlainMessage("Login", "Login Successful");
         }
+    }
+
+    /**
+     * Returns the StudentModel.
+     * @return
+     */
+    public StudentModel getTheStudent(){
+        return theStudent;
     }
 }

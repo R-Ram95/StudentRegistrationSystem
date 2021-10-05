@@ -24,33 +24,12 @@ public class StudentModel {
     }
 
     //facilitates adding a course
-    public void registerForCourse(CatalogueModel cat, String courseName, String courseNumber, int secNumber){
-        if(courseList.size() >= 6){
-            System.err.println("ERROR, You've already enrolled in the maximum number of courses.");
-        }
+    public void registerForCourse(CourseModel theCourse, CourseOfferingModel theOffering){
+        // TODO add checking if student is registered in too many courses
 
-        else{
-            //search catalogue for the course
-            CourseModel myCourse = cat.searchCat(courseName, courseNumber);
-
-            if(myCourse == null){
-                System.err.println("ERROR, Incorrect course or section number, please try again.");
-                return;
-            }
-            //if the course list already contains the course
-            if(courseList.contains(searchCourseList(courseName, courseNumber))){
-                System.err.println("ERROR, student's already enrolled in this course!");
-                return;
-            }
-            //if the course exists, we need the section number
-            CourseOfferingModel theOffering = myCourse.matchOffering(secNumber);
-
-            RegistrationModel reg = new RegistrationModel(this, theOffering);
-            //adds the course to the course list
-            reg.addRegistration();
-            System.out.println("You've successfully enrolled in " + courseName + " " + courseNumber);
-
-        }
+        RegistrationModel reg = new RegistrationModel(this, theOffering);
+        //adds the course to the course list
+        reg.addRegistration();
     }
 
     //facilitates removing a course

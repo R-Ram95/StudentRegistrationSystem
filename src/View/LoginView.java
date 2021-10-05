@@ -28,15 +28,36 @@ public class LoginView extends JPanel{
         loginButton.addActionListener(listenForLogin);
     }
 
+    /**
+     * Returns the StudentModel students name.
+     * @return
+     */
     public String getStudentName() {
         return nameText.getText();
     }
 
+    /**
+     * Returns the StudentModel students id.
+     * @return
+     */
     public int getStudentId() {
         return Integer.parseInt(studentIdText.getText());
     }
 
+    /**
+     * Displays an error message in a dialog box.
+     * @param errorMessage the error message
+     */
     public void displayErrorMessage(String errorMessage) {
         JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+    /**
+     * Displays a plain message in a dialog box
+     * @param titleMessage title of the dialog box
+     * @param plainMessage the plain message
+     */
+    public void displayPlainMessage(String titleMessage,String plainMessage){
+        JOptionPane.showMessageDialog(this, plainMessage, titleMessage, JOptionPane.PLAIN_MESSAGE);
     }
 }

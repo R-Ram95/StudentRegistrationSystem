@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * RegistrationPage is the GUI for users to enter information when
@@ -69,5 +70,34 @@ public class RegistrationPage extends JFrame {
         return Integer.parseInt(courseSection.getText());
     }
 
+    /**
+     * Adds a click listener for the registration button
+     * @param listenForRegistratioButton
+     */
+    public void addRegistrationActionListener(ActionListener listenForRegistratioButton){
+        registrationButton.addActionListener(listenForRegistratioButton);
+    }
 
+    /**
+     * Displays an error message in a diaglog box.
+     * @param errorMessage the message displayed
+     */
+    public void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+    /**
+     * Displays a plain message in a dialog box
+     * @param titleMessage title of the dialog box
+     * @param plainMessage the plain message
+     */
+    public void displayPlainMessage(String titleMessage,String plainMessage){
+        JOptionPane.showMessageDialog(this, plainMessage, titleMessage, JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public void clearText(){
+        courseName.setText("");
+        courseNumber.setText("");
+        courseSection.setText("");
+    }
 }

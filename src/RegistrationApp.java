@@ -23,7 +23,7 @@ public class RegistrationApp implements ActionListener {
     private JButton registeredButton = new JButton("List Registered Courses");
 
     private CatalogueSearchPage search;
-    private RegistrationPage registration;
+    private RegistrationPage registrationPage;
     private StudentCoursesPage registered;
     private CataloguePage catView;
 
@@ -39,7 +39,7 @@ public class RegistrationApp implements ActionListener {
         //all catalogue view
         catView = new CataloguePage();
         CatalogueModel catMod = new CatalogueModel();
-        CatalogueController catCon = new CatalogueController(catMod, catView);
+        CatalogueController catContro = new CatalogueController(catMod, catView);
 
         // Catalogue search
         search = new CatalogueSearchPage();
@@ -50,6 +50,10 @@ public class RegistrationApp implements ActionListener {
         loginView = new LoginView();
         StudentList studentList = new StudentList();
         LoginController loginController = new LoginController(studentList ,loginView);
+
+        // Registration
+        registrationPage = new RegistrationPage();
+        RegistrationController registrationController = new RegistrationController(registrationPage, loginController, courseController);
 
     }
 
@@ -96,8 +100,7 @@ public class RegistrationApp implements ActionListener {
 
         // registration button pressed
         if(e.getSource() == registrationButton){
-            registration = new RegistrationPage();
-            registration.displayGUI(loginView);
+            registrationPage.displayGUI(loginView);
         }
 
         // registered button pressed

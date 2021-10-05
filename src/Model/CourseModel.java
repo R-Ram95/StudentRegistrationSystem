@@ -38,6 +38,24 @@ public class CourseModel{
         return null;
     }
 
+    /**
+     * Searches the courses offerings for the given section Number
+     * @param sectionNumber the section number searched for
+     * @return the Course Offering
+     */
+    public CourseOfferingModel searchOfferingList(int sectionNumber){
+
+        for(CourseOfferingModel o : offeringList){
+            // section found
+            if(o.getSectionNum() == sectionNumber){
+                return o;
+            }
+        }
+
+        // section not found
+        return null;
+    }
+
     //setters and getters
     public ArrayList<CourseModel> getPreReq() {
         return this.preReqList;

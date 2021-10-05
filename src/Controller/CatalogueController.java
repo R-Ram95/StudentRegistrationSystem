@@ -2,7 +2,6 @@ package Controller;
 
 import Model.CatalogueModel;
 import View.CataloguePage;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
