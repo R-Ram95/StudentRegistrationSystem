@@ -10,7 +10,7 @@ import Controller.CourseController;
 /**
  * Search catalogue for a course
  */
-public class CatalogueSearchPage {
+public class CatalogueSearchPage extends JFrame {
 
     private JLabel courseNameLabel = new JLabel("Course Name");
     private JTextField courseName = new JTextField(10);
@@ -56,6 +56,9 @@ public class CatalogueSearchPage {
      * @return the course name
      */
     public String getCourseName() {
+        if(courseName.getText().equals("")){
+            return null;
+        }
         return courseName.getText();
     }
 
@@ -64,6 +67,9 @@ public class CatalogueSearchPage {
      * @return the course number
      */
     public String getCourseNumber() {
+        if(courseNumber.getText().equals("")) {
+            return null;
+        }
         return courseNumber.getText();
     }
 
@@ -76,4 +82,12 @@ public class CatalogueSearchPage {
 
     }
 
+    public void displayErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
+
+    public void clearText(){
+        courseName.setText("");
+        courseNumber.setText("");
+    }
 }

@@ -2,6 +2,10 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Holds all the information required for a course such as
+ * prerequisites list and offering list
+ */
 public class CourseModel{
     private String courseName;
     private String courseNumber;
@@ -41,7 +45,6 @@ public class CourseModel{
                 return o;
             }
         }
-
         // section not found
         return null;
     }

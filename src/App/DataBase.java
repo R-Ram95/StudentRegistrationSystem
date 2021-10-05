@@ -5,6 +5,9 @@ import Model.CourseOfferingModel;
 import Model.StudentModel;
 import java.util.ArrayList;
 
+/**
+ * to imitate the workings of a real database
+ */
 public class DataBase {
 
     ArrayList<CourseModel> courses = new ArrayList<>();
@@ -17,15 +20,14 @@ public class DataBase {
     public ArrayList<CourseModel> loadCatalogueFromDB(){
 
         courses.add(new CourseModel("ENGG", "233"));
-        courses.add(new CourseModel("ENGG", "233"));
-        courses.add(new CourseModel("ENGG", "233"));
-        courses.add(new CourseModel("ENGG", "233"));
-        courses.add(new CourseModel("ENGG", "233"));
-        courses.add(new CourseModel("ENGG", "233"));
+        courses.add(new CourseModel("ENGG", "234"));
+        courses.add(new CourseModel("ENGG", "235"));
+        courses.add(new CourseModel("ENGG", "236"));
+        courses.add(new CourseModel("ENGG", "237"));
+        courses.add(new CourseModel("ENGG", "238"));
 
 
         for (CourseModel c : courses){
-
             c.addPrereq(new CourseModel("ENGG", "101"));
             c.addPrereq(new CourseModel("ENSF", "592"));
         }
