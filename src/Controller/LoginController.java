@@ -30,11 +30,11 @@ public class LoginController{
             try {
                 // search for student
                 theStudent = studentList.searchStudentList(studentName, studentId);
-            }catch(NullPointerException e1){
+                loginView.displayPlainMessage("Login", "Login Successful");
+            } // Login was not successful
+            catch(NullPointerException e1){
                 loginView.displayErrorMessage("ERROR: Student not found.");
             }
-
-            loginView.displayPlainMessage("Login", "Login Successful");
         }
     }
 

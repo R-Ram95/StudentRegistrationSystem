@@ -24,7 +24,7 @@ public class RegistrationApp implements ActionListener {
 
     private CatalogueSearchPage search;
     private RegistrationPage registrationPage;
-    private StudentCoursesPage registered;
+    private StudentCoursesPage studentCoursesPage;
     private CataloguePage catView;
 
     private LoginView loginView;
@@ -54,6 +54,10 @@ public class RegistrationApp implements ActionListener {
         // Registration
         registrationPage = new RegistrationPage();
         RegistrationController registrationController = new RegistrationController(registrationPage, loginController, courseController);
+
+        // Registered Courses
+        studentCoursesPage = new StudentCoursesPage();
+        StudentController studentController = new StudentController(studentCoursesPage, loginController);
 
     }
 
@@ -105,8 +109,7 @@ public class RegistrationApp implements ActionListener {
 
         // registered button pressed
         if(e.getSource() == registeredButton){
-            registered = new StudentCoursesPage();
-            registered.displayGUI(loginView);
+            studentCoursesPage.displayGUI(loginView);
         }
 
     }

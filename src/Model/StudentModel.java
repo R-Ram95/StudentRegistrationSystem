@@ -71,25 +71,14 @@ public class StudentModel {
         return null;
     }
 
-    public void printCourseList(){
-        System.out.print("Registered Courses: ");
-        for(RegistrationModel course : courseList){
-            System.out.print(course.getOffering().getCourse() + " ");
+    public String showCourseList(){
+        StringBuffer buffer = new StringBuffer();
+        for(RegistrationModel r: courseList){
+            buffer.append(r.getOffering().getCourse());
+            buffer.append(r.getOffering());
         }
-        System.out.println("");
-    }
 
-    public StudentModel studentLogin(ArrayList<StudentModel> students, String name, int id){
-
-        for(StudentModel search:students){
-            //if the student name in the list is the same as the one inputted
-            if(search.getStudentName().equals(name) && search.getStudentId() == id){
-                //then this is the student
-                return search;
-            }
-        }
-        //if not found in the arraylist
-        return null;
+        return buffer.toString();
     }
 
     public void addRegistration(RegistrationModel reg){

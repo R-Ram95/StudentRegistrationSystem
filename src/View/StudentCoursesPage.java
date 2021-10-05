@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,8 @@ import java.util.ArrayList;
  */
 public class StudentCoursesPage {
 
-    JTextArea courseArea = new JTextArea(20, 30);
+    private JTextArea courseArea = new JTextArea(20, 30);
+    private JButton showCourseButton = new JButton("Show Courses");
 
     public void displayGUI(LoginView loginView) {
         JFrame frame = new JFrame();
@@ -20,6 +22,7 @@ public class StudentCoursesPage {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         panel.add(loginView);
+        panel.add(showCourseButton);
         panel.add(new JTextField("Student's Courses"));
         panel.add(courseArea);
 
@@ -32,4 +35,7 @@ public class StudentCoursesPage {
         courseArea.setText(text);
     }
 
+    public void addShowCourseActionListener(ActionListener listenForCourseButton){
+        showCourseButton.addActionListener(listenForCourseButton);
+    }
 }

@@ -34,9 +34,9 @@ public class RegistrationController {
                 int courseSection = registrationView.getCourseSection();
                 theStudent = loginController.getTheStudent(); // get student from login
 
-                // search catalogue for course
+                // does course exist
                 CourseModel theCourse = courseController.model.searchCat(courseName, Integer.toString(courseNumber)); // TODO get int input
-                // make sure section exists in course
+                // does course section exist
                 CourseOfferingModel theOffering = theCourse.searchOfferingList(courseSection);
 
                 theStudent.registerForCourse(theCourse, theOffering);
