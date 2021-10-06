@@ -3,13 +3,13 @@ package Model;
 import java.util.ArrayList;
 
 public class CourseOfferingModel {
-    private int sectionNum;
+    private String sectionNum;
     private int sectionCap;
     private CourseModel theCourse;
     private ArrayList<RegistrationModel> studentList;
     private boolean courseStatus;
 
-    public CourseOfferingModel(int sectionNum, int sectionCap){
+    public CourseOfferingModel(String sectionNum, int sectionCap){
         this.setSectionNum(sectionNum);
         this.setSectionCap(sectionCap);
         studentList = new ArrayList<RegistrationModel>();
@@ -48,11 +48,11 @@ public class CourseOfferingModel {
         return studentList;
     }
 
-    public int getSectionNum() {
+    public String getSectionNum() {
         return this.sectionNum;
     }
 
-    public void setSectionNum(int sectionNum) {
+    public void setSectionNum(String sectionNum) {
         this.sectionNum = sectionNum;
     }
 

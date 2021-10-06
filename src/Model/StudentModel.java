@@ -24,7 +24,7 @@ public class StudentModel {
     }
 
     //facilitates adding a course
-    public void registerForCourse(CatalogueModel catalogueModel, String courseName, String courseNum, int secNum){
+    public void registerForCourse(CatalogueModel catalogueModel, String courseName, String courseNum, String secNum){
 
 
         // get the course
@@ -40,13 +40,13 @@ public class StudentModel {
     }
 
     //facilitates removing a course
-    public void removeCourse(String courseName, String courseNumber, int sectionNum) throws NullPointerException{
+    public void removeCourse(String courseName, String courseNumber) throws NullPointerException{
 
-        RegistrationModel registrationResult = searchList(courseName, courseNumber, sectionNum);
+        RegistrationModel registrationResult = searchList(courseName, courseNumber);
         registrationResult.removeRegistration();
     }
 
-    public RegistrationModel searchList(String courseName, String courseNumber, int sectionNum){
+    public RegistrationModel searchList(String courseName, String courseNumber){
         if(courseList.size() == 0){
             return null;
         }

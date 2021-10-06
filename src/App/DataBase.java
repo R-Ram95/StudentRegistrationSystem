@@ -34,9 +34,9 @@ public class DataBase {
 
         for (CourseModel c: courses){
 
-            c.addOfferingList(1, 80);
-            c.addOfferingList(2, 80);
-            c.addOfferingList(3, 80);
+            c.addOfferingList("1", 80);
+            c.addOfferingList("2", 80);
+            c.addOfferingList("3", 80);
 
             for(CourseOfferingModel o: c.getOfferingList()){
                 o.setCourse(c);

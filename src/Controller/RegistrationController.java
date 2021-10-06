@@ -1,10 +1,7 @@
 package Controller;
 
-import Model.CourseModel;
-import Model.CourseOfferingModel;
 import Model.StudentModel;
 import View.RegistrationPage;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,25 +26,29 @@ public class RegistrationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            String courseName = registrationView.getCourseName();
+            String courseNumber = registrationView.getCourseNumber();
+            String courseSection = registrationView.getCourseSection();
+
+            // information not entered
+            if(courseName == null || courseNumber == null || courseSection == null){
+                registrationView.displayErrorMessage("ERROR: You must enter a course name, number, and section");
+                return;
+            }
+
+            theStudent = loginController.getTheStudent(); // get student from login
+            // student not logged in
+            if(theStudent == null){
+                registrationView.displayErrorMessage("You must login");
+                return;
+            }
+
             try {
-                String courseName = registrationView.getCourseName();
-                int courseNumber = registrationView.getCourseNumber();
-                int courseSection = registrationView.getCourseSection();
-
-                theStudent = loginController.getTheStudent(); // get student from login
-
-
                 theStudent.registerForCourse(catalogueController.getCatalogueModel(), courseName,
-                        Integer.toString(courseNumber), courseSection);
-
+                                                courseNumber, courseSection);
                 // registration was successful
                 registrationView.displayPlainMessage("Registration", "Course registered");
                 registrationView.clearText();
-            }
-            // user did not enter course information
-            catch (NumberFormatException e2){
-                registrationView.displayErrorMessage("ERROR: You must enter a course name, number, and section");
-
             }
             // the course was not found
             catch(NullPointerException e1){
@@ -60,24 +61,30 @@ public class RegistrationController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                String courseName = registrationView.getCourseName();
-                int courseNumber = registrationView.getCourseNumber();
-                int courseSection = registrationView.getCourseSection();
+            String courseName = registrationView.getCourseName();
+            String courseNumber = registrationView.getCourseNumber();
 
-                theStudent = loginController.getTheStudent(); // get student from login
-                theStudent.removeCourse(courseName, Integer.toString(courseNumber), courseSection);
-                registrationView.displayPlainMessage("Registration", "Unregistered from Course.");
-
+            // information not entered
+            if(courseName == null || courseNumber == null){
+                registrationView.displayErrorMessage("ERROR: You must enter a course name and number");
+                return;
             }
-            // user did not enter course information
-            catch (NumberFormatException e2){
-                registrationView.displayErrorMessage("ERROR: You must enter a course name, number, and section");
 
+            theStudent = loginController.getTheStudent(); // get student from login
+            // student not logged in
+            if(theStudent == null){
+                registrationView.displayErrorMessage("You must login");
+                return;
+            }
+
+            try {
+                theStudent.removeCourse(courseName, courseNumber);
+                // successfully unregistered
+                registrationView.displayPlainMessage("Registration", "Unregistered from Course.");
             }
             // course not found
             catch(NullPointerException e1){
-                registrationView.displayErrorMessage("ERROR: Course not found.");
+                registrationView.displayErrorMessage("ERROR: You are not registered for this course.");
             }
         }
     }
