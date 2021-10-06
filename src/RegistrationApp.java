@@ -1,6 +1,7 @@
 import Controller.LoginController;
 import Model.CatalogueModel;
 import Controller.CatalogueController;
+import Model.CourseModel;
 import Model.StudentList;
 import View.*;
 import Controller.*;
@@ -43,8 +44,7 @@ public class RegistrationApp implements ActionListener {
 
         // Catalogue search
         search = new CatalogueSearchPage();
-        CatalogueModel catalogueModel = new CatalogueModel();
-        CourseController courseController = new CourseController(catalogueModel, search);
+        CourseController courseController = new CourseController(catContro, search);
 
         // Student login
         loginView = new LoginView();

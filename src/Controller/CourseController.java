@@ -13,11 +13,12 @@ import java.awt.event.ActionListener;
  * it exists.
  */
 public class CourseController {
-    CatalogueModel catalogueModel;
+    CatalogueController catalogueController;
     CatalogueSearchPage catalogueView;
 
-    public CourseController(CatalogueModel model, CatalogueSearchPage view) {
-        this.catalogueModel = model;
+
+    public CourseController(CatalogueController controller, CatalogueSearchPage view) {
+        this.catalogueController = controller;
         this.catalogueView = view;
 
         view.addActionListener(new CourseListener());
@@ -26,9 +27,9 @@ public class CourseController {
     /** nested class that implements action listener to facilate the communication
      * between the model and the view **/
     class CourseListener implements ActionListener {
+        CourseModel courseFound;
         String courseName;
         String courseNum;
-        CourseModel courseFound;
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -43,7 +44,7 @@ public class CourseController {
                 return;
             }
 
-            courseFound = catalogueModel.searchCat(courseName, courseNum);
+            courseFound = catalogueController.getCatalogueModel().searchCat(courseName, courseNum);
 
             //if the course was not found in database, display error message
             if (courseFound == null){
