@@ -1,7 +1,6 @@
 import Controller.LoginController;
 import Model.CatalogueModel;
 import Controller.CatalogueController;
-import Model.CourseModel;
 import Model.StudentList;
 import View.*;
 import Controller.*;
@@ -36,7 +35,9 @@ public class RegistrationApp implements ActionListener {
         registrationButton.addActionListener(this);
         registeredButton.addActionListener(this);
 
-        // Models and Controllers here
+    }
+
+    public void runApp(){
         //all catalogue view
         catView = new CataloguePage();
         CatalogueModel catalogueModel = new CatalogueModel();
@@ -54,12 +55,13 @@ public class RegistrationApp implements ActionListener {
         // Registration
         registrationPage = new RegistrationPage();
         RegistrationController registrationController = new RegistrationController(registrationPage, loginController,
-                                                                            catalogueController);
+                catalogueController);
 
         // Registered Courses
         studentCoursesPage = new StudentCoursesPage();
         StudentController studentController = new StudentController(studentCoursesPage, loginController);
 
+        displayApp();
     }
 
     public void displayApp() {
