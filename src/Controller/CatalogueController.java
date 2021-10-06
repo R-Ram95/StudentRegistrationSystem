@@ -11,12 +11,12 @@ import java.awt.event.ActionListener;
  * in the catalogue.
  */
 public class CatalogueController {
-    CatalogueModel model;
-    CataloguePage view;
+    CatalogueModel catalogueModel;
+    CataloguePage catalogueView;
 
     public CatalogueController(CatalogueModel model, CataloguePage view){
-        this.model = model;
-        this.view = view;
+        this.catalogueModel = model;
+        this.catalogueView = view;
 
         view.addActionListener(new CatalogueListener());
     }
@@ -26,16 +26,8 @@ public class CatalogueController {
     class CatalogueListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            String courses = model.getString();
-            view.setTheView(courses);
+            String courses = catalogueModel.getString();
+            catalogueView.setTheView(courses);
         }
-    }
-    //gets the string version of the toString method in the model
-    public String getTheList(){
-        return model.toString();
-    }
-
-    public CatalogueModel getModel(){
-        return model;
     }
 }

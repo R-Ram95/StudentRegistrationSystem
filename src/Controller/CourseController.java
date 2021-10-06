@@ -13,12 +13,12 @@ import java.awt.event.ActionListener;
  * it exists.
  */
 public class CourseController {
-    CatalogueModel model;
-    CatalogueSearchPage view;
+    CatalogueModel catalogueModel;
+    CatalogueSearchPage catalogueView;
 
     public CourseController(CatalogueModel model, CatalogueSearchPage view) {
-        this.model = model;
-        this.view = view;
+        this.catalogueModel = model;
+        this.catalogueView = view;
 
         view.addActionListener(new CourseListener());
     }
@@ -33,29 +33,29 @@ public class CourseController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            courseName = view.getCourseName();
-            courseNum = view.getCourseNumber();
+            courseName = catalogueView.getCourseName();
+            courseNum = catalogueView.getCourseNumber();
 
             //if the course name and course number text fields are empty, display error message
             if (courseName == null || courseNum == null){
-                view.displayErrorMessage("ERROR: You must enter a course name and number.");
-                view.clearText();
+                catalogueView.displayErrorMessage("ERROR: You must enter a course name and number.");
+                catalogueView.clearText();
                 return;
             }
 
-            courseFound = model.searchCat(courseName, courseNum);
+            courseFound = catalogueModel.searchCat(courseName, courseNum);
 
             //if the course was not found in database, display error message
             if (courseFound == null){
-                view.displayErrorMessage("ERROR: Course not found.");
-                view.clearText();
+                catalogueView.displayErrorMessage("ERROR: Course not found.");
+                catalogueView.clearText();
                 return;
             }
 
             //if the course was found, then display the course name, number, and offerings
             if (courseFound != null) {
-                view.setCourse(courseName, courseNum, courseFound.getString());
-                view.clearText();
+                catalogueView.setCourse(courseName, courseNum, courseFound.getString());
+                catalogueView.clearText();
             }
         }
     }

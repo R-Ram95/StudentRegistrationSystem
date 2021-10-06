@@ -11,10 +11,7 @@ import java.util.ArrayList;
  * Shows full Catalogue
  */
 public class CataloguePage extends JFrame{
-
-    private CatalogueController controller;
-//    private JButton button;
-
+    
     private JTextArea textArea = new JTextArea(100, 100);
     private JButton goButton  = new JButton("Show All Courses");
     private JTextArea courseArea = new JTextArea();

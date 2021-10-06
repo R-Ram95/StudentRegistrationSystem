@@ -10,9 +10,9 @@ import java.util.NoSuchElementException;
 
 public class LoginController{
 
-    LoginView loginView;
-    StudentList studentList;
-    StudentModel theStudent;
+    private LoginView loginView;
+    private StudentList studentList;
+    private StudentModel theStudent;
 
     public LoginController(StudentList list, LoginView login){
         loginView = login;

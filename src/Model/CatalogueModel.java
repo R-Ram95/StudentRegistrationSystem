@@ -13,11 +13,6 @@ public class CatalogueModel{
         courseList = db.loadCatalogueFromDB();
     }
 
-    public void listCourses(){
-        //just loads the courses
-        System.out.println(this);
-    }
-
     //gets the string of the course list
     public String getString(){
         StringBuffer attempt = new StringBuffer();
