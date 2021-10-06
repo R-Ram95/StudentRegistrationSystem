@@ -13,13 +13,13 @@ public class RegistrationController {
     private StudentModel theStudent;
     private RegistrationPage registrationView;
     private LoginController loginController;
-    private CourseController courseController;
+    private CatalogueController catalogueController;
 
     public RegistrationController(RegistrationPage registrationView, LoginController loginController,
-                                  CourseController courseController){
+                                  CatalogueController catalogueController){
         this.registrationView = registrationView;
         this.loginController = loginController;
-        this.courseController = courseController;
+        this.catalogueController = catalogueController;
 
         registrationView.addRegistrationActionListener(new RegistrationListener());
         registrationView.addUnregistrationActionListener(new UnregistrationListener());
@@ -33,19 +33,16 @@ public class RegistrationController {
                 String courseName = registrationView.getCourseName();
                 int courseNumber = registrationView.getCourseNumber();
                 int courseSection = registrationView.getCourseSection();
+
                 theStudent = loginController.getTheStudent(); // get student from login
 
-                // does course exist
-                CourseModel theCourse = courseController.catalogueModel.searchCat(courseName, Integer.toString(courseNumber)); // TODO get int input
-                // does course section exist
-                CourseOfferingModel theOffering = theCourse.searchOfferingList(courseSection);
 
-                theStudent.registerForCourse(theOffering);
+                theStudent.registerForCourse(catalogueController.getCatalogueModel(), courseName,
+                        Integer.toString(courseNumber), courseSection);
 
                 // registration was successful
                 registrationView.displayPlainMessage("Registration", "Course registered");
                 registrationView.clearText();
-
             }
             // user did not enter course information
             catch (NumberFormatException e2){

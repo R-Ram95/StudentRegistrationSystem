@@ -30,7 +30,7 @@ public class CatalogueController {
             catalogueView.setTheView(courses);
         }
     }
-    
+
     public CatalogueModel getCatalogueModel(){
         return catalogueModel;
     }

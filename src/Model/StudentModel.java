@@ -24,10 +24,17 @@ public class StudentModel {
     }
 
     //facilitates adding a course
-    public void registerForCourse(CourseOfferingModel theOffering){
-        // TODO add checking if student is registered in too many courses
+    public void registerForCourse(CatalogueModel catalogueModel, String courseName, String courseNum, int secNum){
+
+
+        // get the course
+        CourseModel theCourse = catalogueModel.searchCat(courseName, courseNum);
+
+        // get the offering
+        CourseOfferingModel theOffering = theCourse.searchOfferingList(secNum);
 
         RegistrationModel reg = new RegistrationModel(this, theOffering);
+
         //adds the course to the course list
         reg.addRegistration();
     }

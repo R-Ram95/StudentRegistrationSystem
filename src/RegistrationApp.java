@@ -39,12 +39,12 @@ public class RegistrationApp implements ActionListener {
         // Models and Controllers here
         //all catalogue view
         catView = new CataloguePage();
-        CatalogueModel catMod = new CatalogueModel();
-        CatalogueController catContro = new CatalogueController(catMod, catView);
+        CatalogueModel catalogueModel = new CatalogueModel();
+        CatalogueController catalogueController = new CatalogueController(catalogueModel, catView);
 
         // Catalogue search
         search = new CatalogueSearchPage();
-        CourseController courseController = new CourseController(catContro, search);
+        CourseController courseController = new CourseController(catalogueController, search);
 
         // Student login
         loginView = new LoginView();
@@ -53,7 +53,8 @@ public class RegistrationApp implements ActionListener {
 
         // Registration
         registrationPage = new RegistrationPage();
-        RegistrationController registrationController = new RegistrationController(registrationPage, loginController, courseController);
+        RegistrationController registrationController = new RegistrationController(registrationPage, loginController,
+                                                                            catalogueController);
 
         // Registered Courses
         studentCoursesPage = new StudentCoursesPage();
