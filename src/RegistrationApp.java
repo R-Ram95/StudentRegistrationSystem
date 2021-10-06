@@ -1,8 +1,8 @@
 import Controller.LoginController;
 import Model.CatalogueModel;
 import Controller.CatalogueController;
-import Model.CourseModel;
 import Model.StudentList;
+import Model.StudentModel;
 import View.*;
 import Controller.*;
 import View.CatalogueSearchPage;
@@ -18,47 +18,39 @@ import java.awt.event.ActionListener;
  */
 public class RegistrationApp implements ActionListener {
 
+    private JButton loginButton = new JButton("Student Login");
     private JButton searchButton = new JButton("Search Course Catalogue");
     private JButton catalogueButton = new JButton("List Course Catalogue");
     private JButton registrationButton = new JButton("Register/Unregister Courses");
     private JButton registeredButton = new JButton("List Registered Courses");
 
+    private LoginView loginView;
     private CatalogueSearchPage search;
     private RegistrationPage registrationPage;
     private StudentCoursesPage studentCoursesPage;
     private CataloguePage catView;
 
-    private LoginView loginView;
+    private LoginController loginController;
+    private StudentModel theStudent;
 
-    public RegistrationApp(){
+    public void runApp(){
+
+        loginButton.addActionListener(this);
         searchButton.addActionListener(this);
         catalogueButton.addActionListener(this);
         registrationButton.addActionListener(this);
         registeredButton.addActionListener(this);
 
-        // Models and Controllers here
         //all catalogue view
         catView = new CataloguePage();
-        CatalogueModel catMod = new CatalogueModel();
-        CatalogueController catContro = new CatalogueController(catMod, catView);
+        CatalogueModel catalogueModel = new CatalogueModel();
+        CatalogueController catalogueController = new CatalogueController(catalogueModel, catView);
 
         // Catalogue search
         search = new CatalogueSearchPage();
-        CourseController courseController = new CourseController(catContro, search);
+        CourseController courseController = new CourseController(catalogueController, search);
 
-        // Student login
-        loginView = new LoginView();
-        StudentList studentList = new StudentList();
-        LoginController loginController = new LoginController(studentList ,loginView);
-
-        // Registration
-        registrationPage = new RegistrationPage();
-        RegistrationController registrationController = new RegistrationController(registrationPage, loginController, courseController);
-
-        // Registered Courses
-        studentCoursesPage = new StudentCoursesPage();
-        StudentController studentController = new StudentController(studentCoursesPage, loginController);
-
+        displayApp();
     }
 
     public void displayApp() {
@@ -67,7 +59,7 @@ public class RegistrationApp implements ActionListener {
         frame.setTitle("Registration App");
 
         //configure the frame
-        frame.setSize(350, 200);
+        frame.setSize(350, 250);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
@@ -75,12 +67,14 @@ public class RegistrationApp implements ActionListener {
         panel.setLayout(null);
 
         // formatting
-        searchButton.setBounds(75, 10, 200, 25);
-        catalogueButton.setBounds(75, 50, 200, 25);
-        registrationButton.setBounds(75, 90, 200, 25);
-        registeredButton.setBounds(75, 130, 200, 25);
+        loginButton.setBounds(75, 10, 200, 25);
+        searchButton.setBounds(75, 50, 200, 25);
+        catalogueButton.setBounds(75, 90, 200, 25);
+        registrationButton.setBounds(75, 130, 200, 25);
+        registeredButton.setBounds(75, 170, 200, 25);
 
         // add components
+        panel.add(loginButton);
         panel.add(searchButton);
         panel.add(catalogueButton);
         panel.add(registrationButton);
@@ -93,6 +87,14 @@ public class RegistrationApp implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        // login pressed
+        if(e.getSource() == loginButton){
+            loginView = new LoginView();
+            StudentList studentList = new StudentList();
+            loginController = new LoginController(studentList, loginView);
+            loginView.displayGUI();
+        }
+
         // search button pressed
         if(e.getSource() == searchButton){
             search.displayGUI();
@@ -104,14 +106,24 @@ public class RegistrationApp implements ActionListener {
 
         // registration button pressed
         if(e.getSource() == registrationButton){
-            registrationPage.displayGUI(loginView);
+            registrationPage = new RegistrationPage();
+
+            CatalogueModel catalogueModel = new CatalogueModel();
+            theStudent = loginController.getTheStudent();
+
+            RegistrationController registrationController = new RegistrationController(registrationPage, theStudent,
+                    catalogueModel);
+            registrationPage.displayGUI();
         }
 
         // registered button pressed
         if(e.getSource() == registeredButton){
-            studentCoursesPage.displayGUI(loginView);
+            studentCoursesPage = new StudentCoursesPage();
+            theStudent = loginController.getTheStudent();
+
+            StudentController studentController = new StudentController(studentCoursesPage, theStudent);
+            studentCoursesPage.displayGUI();
         }
 
     }
-
 }

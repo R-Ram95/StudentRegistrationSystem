@@ -19,7 +19,7 @@ public class RegistrationPage extends JFrame {
     private JButton registrationButton = new JButton("Register");
     private JButton unregisterButton = new JButton("Unregister");
 
-    public void displayGUI(LoginView loginPanel){
+    public void displayGUI(){
         JFrame frame = new JFrame("Registration Page");
         frame.setSize(600, 200);
 
@@ -38,7 +38,6 @@ public class RegistrationPage extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.add(loginPanel, BorderLayout.CENTER);
         panel.add(regPanel, BorderLayout.SOUTH);
 
         // add registration view
@@ -51,6 +50,11 @@ public class RegistrationPage extends JFrame {
      * @return the course name
      */
     public String getCourseName() {
+
+        if(courseName.getText().equals("")) {
+            return null;
+        }
+
         return courseName.getText();
     }
 
@@ -58,16 +62,24 @@ public class RegistrationPage extends JFrame {
      * Returns the course number entered by the user
      * @return the course number
      */
-    public int getCourseNumber() {
-        return Integer.parseInt(courseNumber.getText());
+    public String getCourseNumber() {
+        if(courseNumber.getText().equals("")) {
+            return null;
+        }
+
+        return courseNumber.getText();
     }
 
     /**
      * Returns the course section entered by the user
      * @return the course section
      */
-    public int getCourseSection() {
-        return Integer.parseInt(courseSection.getText());
+    public String getCourseSection() {
+        if(courseSection.getText().equals("")) {
+            return null;
+        }
+
+        return courseSection.getText();
     }
 
     /**

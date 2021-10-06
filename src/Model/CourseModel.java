@@ -26,7 +26,7 @@ public class CourseModel{
     }
 
     //adding a course offering to the list
-    public void addOfferingList(int sectionNum, int capacity){
+    public void addOfferingList(String sectionNum, int capacity){
         CourseOfferingModel offering = new CourseOfferingModel(sectionNum, capacity);
         offeringList.add(offering);
     }
@@ -37,11 +37,11 @@ public class CourseModel{
      * @param sectionNumber the section number searched for
      * @return the Course Offering
      */
-    public CourseOfferingModel searchOfferingList(int sectionNumber){
+    public CourseOfferingModel searchOfferingList(String sectionNumber){
 
         for(CourseOfferingModel o : offeringList){
             // section found
-            if(o.getSectionNum() == sectionNumber){
+            if(o.getSectionNum().equals(sectionNumber)){
                 return o;
             }
         }
