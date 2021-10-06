@@ -3,25 +3,36 @@ package View;
 import Controller.LoginController;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * View for logging in
  */
-public class LoginView extends JPanel{
+public class LoginView extends JFrame{
     JButton loginButton = new JButton("Login");
     JTextField nameText = new JTextField(10);
     JTextField studentIdText = new JTextField(10);
 
-    public LoginView(){
+    public void displayGUI(){
+        JFrame frame = new JFrame("Registration Page");
+        frame.setSize(600, 200);
+        // registration panel
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3,2));
+
         JLabel nameLabel = new JLabel("Student Name: ");
-        add(nameLabel);
-        add(nameText);
+        panel.add(nameLabel);
+        panel.add(nameText);
         JLabel studentIdLabel = new JLabel("Student Number: ");
-        add(studentIdLabel);
-        add(studentIdText);
-        add(loginButton);
+        panel.add(studentIdLabel);
+        panel.add(studentIdText);
+        panel.add(loginButton);
+
+        // add registration view
+        frame.add(panel);
+        frame.setVisible(true);
     }
 
     public void addLoginListener(ActionListener listenForLogin){

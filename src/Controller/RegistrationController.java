@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.CatalogueModel;
 import Model.StudentModel;
 import View.RegistrationPage;
 import java.awt.event.ActionEvent;
@@ -9,14 +10,13 @@ public class RegistrationController {
 
     private StudentModel theStudent;
     private RegistrationPage registrationView;
-    private LoginController loginController;
-    private CatalogueController catalogueController;
+    private CatalogueModel catalogueModel;
 
-    public RegistrationController(RegistrationPage registrationView, LoginController loginController,
-                                  CatalogueController catalogueController){
+    public RegistrationController(RegistrationPage registrationView, StudentModel theStudent,
+                                  CatalogueModel catalogueModel){
         this.registrationView = registrationView;
-        this.loginController = loginController;
-        this.catalogueController = catalogueController;
+        this.catalogueModel = catalogueModel;
+        this.theStudent = theStudent;
 
         registrationView.addRegistrationActionListener(new RegistrationListener());
         registrationView.addUnregistrationActionListener(new UnregistrationListener());
@@ -36,7 +36,6 @@ public class RegistrationController {
                 return;
             }
 
-            theStudent = loginController.getTheStudent(); // get student from login
             // student not logged in
             if(theStudent == null){
                 registrationView.displayErrorMessage("You must login");
@@ -44,7 +43,7 @@ public class RegistrationController {
             }
 
             try {
-                theStudent.registerForCourse(catalogueController.getCatalogueModel(), courseName,
+                theStudent.registerForCourse(catalogueModel, courseName,
                                                 courseNumber, courseSection);
                 // registration was successful
                 registrationView.displayPlainMessage("Registration", "Course registered");
@@ -70,7 +69,6 @@ public class RegistrationController {
                 return;
             }
 
-            theStudent = loginController.getTheStudent(); // get student from login
             // student not logged in
             if(theStudent == null){
                 registrationView.displayErrorMessage("You must login");

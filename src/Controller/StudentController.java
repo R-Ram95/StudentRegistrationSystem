@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 public class StudentController {
 
     private StudentCoursesPage studentCoursesPage;
-    private LoginController loginController;
+    private StudentModel theStudent;
 
-    public StudentController(StudentCoursesPage studentCoursesPage, LoginController loginController){
+    public StudentController(StudentCoursesPage studentCoursesPage, StudentModel theStudent){
         this.studentCoursesPage = studentCoursesPage;
-        this.loginController = loginController;
+        this.theStudent= theStudent;
 
         studentCoursesPage.addShowCourseActionListener(new ShowCourseListener());
     }
@@ -22,9 +22,6 @@ public class StudentController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // get the student
-            StudentModel theStudent = loginController.getTheStudent();
-
             studentCoursesPage.setStudentCourses(theStudent.showCourseList());
         }
     }
