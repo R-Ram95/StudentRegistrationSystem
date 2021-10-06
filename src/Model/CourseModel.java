@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * Holds all the information required for a course such as
+ * Holds all the information required for a cocCurse such as
  * prerequisites list and offering list
  */
 public class CourseModel{
