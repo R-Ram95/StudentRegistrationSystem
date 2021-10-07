@@ -21,3 +21,9 @@ The deliverables for this assignment include:
   - Model
   - View
   - Controller
+
+**Student Information:**
+
+Emily Wang: 30020866
+
+Rohinesh Ram: 30139054

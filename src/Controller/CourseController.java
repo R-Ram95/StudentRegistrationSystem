@@ -13,12 +13,12 @@ import java.awt.event.ActionListener;
  * it exists.
  */
 public class CourseController {
-    CatalogueController catalogueController;
+    CatalogueModel catalogueModel;
     CatalogueSearchPage catalogueView;
 
 
-    public CourseController(CatalogueController controller, CatalogueSearchPage view) {
-        this.catalogueController = controller;
+    public CourseController(CatalogueModel catalogueModel, CatalogueSearchPage view) {
+        this.catalogueModel = catalogueModel;
         this.catalogueView = view;
 
         view.addActionListener(new CourseListener());
@@ -44,7 +44,7 @@ public class CourseController {
                 return;
             }
 
-            courseFound = catalogueController.getCatalogueModel().searchCat(courseName, courseNum);
+            courseFound = catalogueModel.searchCat(courseName, courseNum);
 
             //if the course was not found in database, display error message
             if (courseFound == null){
