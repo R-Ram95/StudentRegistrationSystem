@@ -41,15 +41,6 @@ public class RegistrationApp implements ActionListener {
         registrationButton.addActionListener(this);
         registeredButton.addActionListener(this);
 
-        //all catalogue view
-        catView = new CataloguePage();
-        CatalogueModel catalogueModel = new CatalogueModel();
-        CatalogueController catalogueController = new CatalogueController(catalogueModel, catView);
-
-        // Catalogue search
-        search = new CatalogueSearchPage();
-        CourseController courseController = new CourseController(catalogueController, search);
-
         displayApp();
     }
 
@@ -97,10 +88,16 @@ public class RegistrationApp implements ActionListener {
 
         // search button pressed
         if(e.getSource() == searchButton){
+            CatalogueModel catalogueModel = new CatalogueModel();
+            search = new CatalogueSearchPage();
+            CourseController courseController = new CourseController(catalogueModel, search);
             search.displayGUI();
         }
 
         if(e.getSource() == catalogueButton){
+            catView = new CataloguePage();
+            CatalogueModel catalogueModel = new CatalogueModel();
+            CatalogueController catalogueController = new CatalogueController(catalogueModel, catView);
             catView.displayGUI();
         }
 
