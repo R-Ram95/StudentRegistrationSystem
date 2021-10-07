@@ -26,9 +26,8 @@ public class CourseModel{
     }
 
     //adding a course offering to the list
-    public void addOfferingList(String sectionNum, int capacity){
-        CourseOfferingModel offering = new CourseOfferingModel(sectionNum, capacity);
-        offeringList.add(offering);
+    public void addOfferingList(CourseOfferingModel theOffering){
+        offeringList.add(theOffering);
     }
 
 

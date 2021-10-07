@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * View for logging in
  */
-public class LoginView extends JFrame{
+public class LoginPage extends JFrame{
     JButton loginButton = new JButton("Login");
     JTextField nameText = new JTextField();
     JTextField studentIdText = new JTextField();

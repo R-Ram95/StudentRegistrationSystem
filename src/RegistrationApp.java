@@ -24,7 +24,7 @@ public class RegistrationApp implements ActionListener {
     private JButton registrationButton = new JButton("Register/Unregister Courses");
     private JButton registeredButton = new JButton("List Registered Courses");
 
-    private LoginView loginView;
+    private LoginPage loginView;
     private CatalogueSearchPage search;
     private RegistrationPage registrationPage;
     private StudentCoursesPage studentCoursesPage;
@@ -80,7 +80,7 @@ public class RegistrationApp implements ActionListener {
 
         // login pressed
         if(e.getSource() == loginButton){
-            loginView = new LoginView();
+            loginView = new LoginPage();
             StudentList studentList = new StudentList();
             loginController = new LoginController(studentList, loginView);
             loginView.displayGUI();

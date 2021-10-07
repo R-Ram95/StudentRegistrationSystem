@@ -2,19 +2,18 @@ package Controller;
 
 import Model.StudentList;
 import Model.StudentModel;
-import View.LoginView;
+import View.LoginPage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.NoSuchElementException;
 
 public class LoginController{
 
-    private LoginView loginView;
+    private LoginPage loginView;
     private StudentList studentList;
     private StudentModel theStudent;
 
-    public LoginController(StudentList list, LoginView login){
+    public LoginController(StudentList list, LoginPage login){
         loginView = login;
         studentList = list;
         loginView.addLoginListener(new LoginListener());
