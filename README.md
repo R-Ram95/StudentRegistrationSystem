@@ -3,6 +3,7 @@
 
 **Assignment 3** 
 
+
 This assignment can be done individually or in pair (i.e., groups of 2)
 
 Submission Information and Due Dates
